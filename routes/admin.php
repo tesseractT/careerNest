@@ -7,11 +7,14 @@ use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group([
+    'middleware' => ['guest:admin'],
+    'prefix' => 'admin',
+    'as' => 'admin.'
+], function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
@@ -30,7 +33,11 @@ Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'adm
         ->name('password.store');
 });
 
-Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group([
+    'middleware' => ['auth:admin'],
+    'prefix' => 'admin',
+    'as' => 'admin.'
+], function () {
 
     /** Dashboard Route */
     Route::get('dashboard', function () {
