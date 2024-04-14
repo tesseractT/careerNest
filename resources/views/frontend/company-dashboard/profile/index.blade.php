@@ -94,115 +94,157 @@
                             </form>
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <form action="">
+                            <form action="{{ route('company.profile.establishment-info') }}" method="POST">
+                                @csrf
                                 <div class="row">
 
                                     <div class="col-md-4">
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">Industry Type *</label>
-                                            <select class="form-control form-icons select-active">
+                                            <select name="industry_type"
+                                                class="form-control form-icons select-active
+                                                {{ $errors->has('industry_type') ? 'is-invalid' : '' }}
+                                            ">
                                                 <option value="">Select Industry Type</option>
-                                                <option value="">IT</option>
-                                                <option value="">Banking</option>
-                                                <option value="">Health</option>
-                                                <option value="">Education</option>
+                                                <option value="0">IT</option>
+
                                             </select>
+                                            <x-input-error :messages="$errors->get('industry_type')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">Organization Type *</label>
-                                            <select class="form-control form-icons select-active">
+                                            <select name="organization_type"
+                                                class="form-control form-icons select-active
+                                                {{ $errors->has('organization_type') ? 'is-invalid' : '' }}
+                                                ">
                                                 <option value="">Select Industry Type</option>
-                                                <option value="">IT</option>
-                                                <option value="">Banking</option>
-                                                <option value="">Health</option>
-                                                <option value="">Education</option>
+                                                <option value="0">IT</option>
+
                                             </select>
+                                            <x-input-error :messages="$errors->get('organization_type')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">Team Size *</label>
-                                            <select class="form-control form-icons select-active">
+                                            <select name="team_size"
+                                                class="form-control form-icons select-active
+                                                {{ $errors->has('team_size') ? 'is-invalid' : '' }}
+                                            ">
                                                 <option value="">Select Industry Type</option>
-                                                <option value="">IT</option>
-                                                <option value="">Banking</option>
-                                                <option value="">Health</option>
-                                                <option value="">Education</option>
+                                                <option value="0">IT</option>
+
                                             </select>
+                                            <x-input-error :messages="$errors->get('team_size')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Establishment Date </label>
-                                            <input class="form-control datepicker" type="text" value="">
+                                            <input name="establishment_date"
+                                                class="form-control datepicker
+                                                {{ $errors->has('establishment_date') ? 'is-invalid' : '' }}"
+                                                type="text" value="{{ $companyInfo?->establishment_date }}">
+                                            <x-input-error :messages="$errors->get('establishment_date')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Website Link </label>
-                                            <input class="form-control" type="text" value="">
+                                            <input name="website"
+                                                class="form-control
+                                                {{ $errors->has('website') ? 'is-invalid' : '' }}
+                                            "
+                                                type="text" value="{{ $companyInfo?->website }}">
+                                            <x-input-error :messages="$errors->get('website')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Email * </label>
-                                            <input class="form-control" type="email" value="">
+                                            <input name="email"
+                                                class="form-control
+                                                {{ $errors->has('email') ? 'is-invalid' : '' }}
+                                            "
+                                                type="email" value="{{ $companyInfo?->email }}">
+                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Phone * </label>
-                                            <input class="form-control" type="text" value="">
+                                            <input name="phone"
+                                                class="form-control
+                                                {{ $errors->has('phone') ? 'is-invalid' : '' }}
+                                            "
+                                                type="text" value="{{ $companyInfo?->phone }}">
+                                            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">Country * </label>
-                                            <select class="form-control form-icons select-active">
+                                            <select name="country"
+                                                class="form-control form-icons select-active
+                                                {{ $errors->has('country') ? 'is-invalid' : '' }}
+                                            ">
                                                 <option value="">Select Country</option>
-                                                <option value="">Bangladesh</option>
-                                                <option value="">India</option>
-                                                <option value="">Pakistan</option>
-                                                <option value="">Srilanka</option>
+                                                <option value="0">Bangladesh</option>
+
                                             </select>
+                                            <x-input-error :messages="$errors->get('country')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">State </label>
-                                            <select class="form-control form-icons select-active">
+                                            <select name="state"
+                                                class="form-control form-icons select-active
+                                                {{ $errors->has('state') ? 'is-invalid' : '' }}
+                                            ">
                                                 <option value="">Select State</option>
-                                                <option value="">Dhaka</option>
-                                                <option value="">Chittagong</option>
-                                                <option value="">Khulna</option>
-                                                <option value="">Rajshahi</option>
+                                                <option value="0">Dhaka</option>
+
                                             </select>
+                                            <x-input-error :messages="$errors->get('state')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">City </label>
-                                            <select class="form-control form-icons select-active">
+                                            <select name="city"
+                                                class="form-control form-icons select-active
+                                                {{ $errors->has('city') ? 'is-invalid' : '' }}
+                                            ">
                                                 <option value="">Select City</option>
-                                                <option value="">Dhaka</option>
-                                                <option value="">Chittagong</option>
-                                                <option value="">Khulna</option>
-                                                <option value="">Rajshahi</option>
+                                                <option value="0">Dhaka</option>
+
                                             </select>
+                                            <x-input-error :messages="$errors->get('city')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Address </label>
-                                            <input class="form-control" type="text" value="">
+                                            <input name="address"
+                                                class="form-control
+                                                {{ $errors->has('address') ? 'is-invalid' : '' }}
+                                            "
+                                                type="text" value="{{ $companyInfo?->address }}">
+                                            <x-input-error :messages="$errors->get('address')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Map Link </label>
-                                            <input class="form-control" type="text" value="">
+                                            <input name="map_link"
+                                                class="form-control
+                                                {{ $errors->has('map_link') ? 'is-invalid' : '' }}
+                                            "
+                                                type="text" value="{{ $companyInfo?->map_link }}">
+                                            <x-input-error :messages="$errors->get('map_link')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="box-button mt-15">

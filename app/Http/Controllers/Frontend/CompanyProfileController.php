@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\CompanyEstablishmentInfoUpdateRequest;
 use App\Http\Requests\Frontend\CompanyInfoUpdateRequest;
 use App\Models\Company;
 use App\Traits\FileUploadTrait;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -18,7 +20,7 @@ class CompanyProfileController extends Controller
         return view('frontend.company-dashboard.profile.index', compact('companyInfo'));
     }
 
-    function updateCompanyInfo(CompanyInfoUpdateRequest $request)
+    function updateCompanyInfo(CompanyInfoUpdateRequest $request): RedirectResponse
     {
         $logoPath = $this->uploadFile($request, 'logo');
         $bannerPath = $this->uploadFile($request, 'banner');
@@ -38,6 +40,36 @@ class CompanyProfileController extends Controller
         );
 
         notify()->success('Company Info Updated Successfully');
+
+        return redirect()->back();
+    }
+
+    function updateEstablishmentInfo(CompanyEstablishmentInfoUpdateRequest $request): RedirectResponse
+    {
+
+
+
+        Company::updateOrCreate(
+            [
+                'user_id' => auth()->user()->id
+            ],
+            [
+                'industry_type_id' => $request->industry_type,
+                'organization_type_id' => $request->organization_type,
+                'team_size_id' => $request->team_size,
+                'establishment_date' => $request->establishment_date,
+                'website' => $request->website,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'country' => $request->country,
+                'state' => $request->state,
+                'city' => $request->city,
+                'address' => $request->address,
+                'map_link' => $request->map_link,
+            ]
+        );
+
+        notify()->success('Establishment Info Updated Successfully');
 
         return redirect()->back();
     }
