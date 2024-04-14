@@ -13,6 +13,7 @@
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="">
+    @notifyCss
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet"
@@ -21,6 +22,9 @@
 </head>
 
 <body>
+
+
+    <!-- Preloader -->
 
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -81,7 +85,10 @@
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
-
+    <!-- Laravel Notify -->
+    <x-notify::notify />
+    <!-- Laravel Notify JS -->
+    @notifyJs
     <script>
         $(document).ready(function() {
             $('.datepicker').datepicker({
