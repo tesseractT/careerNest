@@ -7,9 +7,11 @@ use App\Http\Requests\Frontend\CompanyEstablishmentInfoUpdateRequest;
 use App\Http\Requests\Frontend\CompanyInfoUpdateRequest;
 use App\Models\Company;
 use App\Traits\FileUploadTrait;
+use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Validation\Rules;
 
 class CompanyProfileController extends Controller
 {
@@ -70,6 +72,35 @@ class CompanyProfileController extends Controller
         );
 
         notify()->success('Establishment Info Updated Successfully');
+
+        return redirect()->back();
+    }
+
+    function updateAccountInfo(Request $request): RedirectResponse
+    {
+        $validatedData =  $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'email', 'max:100'],
+        ]);
+
+        Auth::user()->update($validatedData);
+
+        notify()->success('Account Info Updated Successfully');
+
+        return redirect()->back();
+    }
+
+    function updatePassword(Request $request): RedirectResponse
+    {
+        $validatedData =  $request->validate([
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        Auth::user()->update([
+            'password' => bcrypt($validatedData['password'])
+        ]);
+
+        notify()->success('Password Updated Successfully');
 
         return redirect()->back();
     }
