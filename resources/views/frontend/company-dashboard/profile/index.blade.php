@@ -42,43 +42,56 @@
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
-                            <div class="row">
-                                <form action="">
+                            <form action="{{ route('company.profile.company-info') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+
                                     <div class="col-md-6">
+                                        <x-image-preview :height="200" :width="200" :src="$companyInfo?->logo" />
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Logo *</label>
-                                            <input class="form-control" type="file" value="">
+                                            <input class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}"
+                                                type="file" value="" name="logo">
+                                            <x-input-error :messages="$errors->get('logo')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                        <x-image-preview :height="200" :width="500" :src="$companyInfo?->banner" />
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Banner *</label>
-                                            <input class="form-control" type="file" value="">
+                                            <input class="form-control {{ $errors->has('banner') ? 'is-invalid' : '' }}"
+                                                type="file" value="" name="banner">
+                                            <x-input-error :messages="$errors->get('banner')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                                type="text" name="name" value="{{ $companyInfo?->name }}">
+                                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Bio *</label>
-                                            <textarea class="form-control summernote"></textarea>
+                                            <textarea class="{{ $errors->has('bio') ? 'is-invalid' : '' }}" name="bio">{{ $companyInfo?->bio }}</textarea>
+                                            <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Vision *</label>
-                                            <textarea class="form-control summernote"></textarea>
+                                            <textarea class="{{ $errors->has('vision') ? 'is-invalid' : '' }}" name="vision">{{ $companyInfo?->vision }}</textarea>
+                                            <x-input-error :messages="$errors->get('vision')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="box-button mt-15">
                                         <button class="btn btn-apply-big font-md font-bold">Save All Changes</button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <form action="">

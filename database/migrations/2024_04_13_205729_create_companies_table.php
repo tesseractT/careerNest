@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->text('bio')->nullable();
             $table->text('vision')->nullable();
-            $table->integer('totla_views')->default(0);
+            $table->integer('total_views')->default(0);
             $table->string('city')->nullable();
             $table->text('address')->nullable();
             $table->string('country')->nullable();
