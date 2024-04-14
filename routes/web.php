@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Frontend\CandidateDashboardController;
+use App\Http\Controllers\Frontend\CompanyDashboardController;
+use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -47,8 +49,11 @@ Route::group(
     ],
 
     function () {
-        Route::get('/dashboard', function () {
-            return view('frontend.company-dashboard.dashboard');
-        })->name('dashboard');
+
+        /** Dashboard Routes */
+        Route::get('/dashboard', [CompanyDashboardController::class, 'index'])->name('dashboard');
+
+        /** Company Profile Routes */
+        Route::get('/profile', [CompanyProfileController::class, 'index'])->name('profile');
     }
 );

@@ -13,6 +13,26 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('industry_type_id');
+            $table->foreignId('organization_type_id');
+            $table->foreignId('team_size_id');
+            $table->string('logo');
+            $table->string('banner');
+            $table->date('establishment_date');
+            $table->string('website')->nullable();
+            $table->text('bio');
+            $table->text('vision');
+            $table->integer('totla_views')->default(0);
+            $table->string('city')->nullable();
+            $table->text('address')->nullable();
+            $table->string('country');
+            $table->string('state')->nullable();
+            $table->text('map_link')->nullable();
+            $table->boolean('is_profile_verified')->default(0);
+            $table->timestamp('document_verified_at')->nullable();
+            $table->boolean('profile_completed')->default(0);
+            $table->boolean('visibility')->default(0);
             $table->timestamps();
         });
     }

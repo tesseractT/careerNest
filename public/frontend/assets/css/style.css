@@ -9641,3 +9641,16 @@ footer .color-text-paragraph {
 .form-check-label:hover {
     color: #198754;
 }
+
+/* custom css */
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: var(--bs-nav-pills-link-active-color);
+    background-color: var(--colorPrimary);
+    border-radius: 0px;
+}
+
+.nav-pills .nav-link {
+    border-radius: var(--bs-nav-pills-border-radius);
+    color: var(--colorBlack);
+}
