@@ -63,7 +63,7 @@ namespace App\Models{
  * @property string|null $email
  * @property string|null $bio
  * @property string|null $vision
- * @property int $totla_views
+ * @property int $total_views
  * @property string|null $city
  * @property string|null $address
  * @property string|null $country
@@ -75,6 +75,7 @@ namespace App\Models{
  * @property int $visibility
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Company findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company query()
@@ -99,12 +100,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereTeamSizeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Company whereTotlaViews($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereTotalViews($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereVisibility($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereVision($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereWebsite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Company extends \Eloquent {}
 }
