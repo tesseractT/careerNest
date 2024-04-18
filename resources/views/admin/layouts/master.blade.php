@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>General Dashboard &mdash; Stisla</title>
-
+    @notifyCss
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/fontawesome/css/all.min.css') }}">
@@ -53,12 +53,56 @@
 
     <!-- JS Libraies -->
     <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 
-    
+    <!-- Laravel notify -->
+    @notifyJs
+    <x-notify::notify />
+    <!--- Laravel notify -->
+
 
     <!-- Template JS File -->
     <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+    <script>
+        $(".delete-item").on('click', function(e) {
+            e.preventDefault();
+            swal({
+                title: 'Are you sure?',
+                text: 'Once deleted, you will not be able to recover this data!',
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    let url = $(this).attr('href');
+                    $.ajax({
+                        method: 'DELETE',
+                        url: url,
+                        data: {
+                            _token: "{{ csrf_token() }}"
+                        },
+                        success: function(response) {
+                            window.location.reload();
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(xhr);
+                            swal(xhr.responseJSON.message, {
+                                icon: 'success',
+                            });
+                        }
+
+                    });
+
+                    swal('Poof! Your data has been deleted!', {
+                        icon: 'success',
+                    });
+                } else {
+                    swal('Your data is safe!');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
