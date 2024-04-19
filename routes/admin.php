@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+use App\Http\Controllers\Admin\OrganizationTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
@@ -48,4 +49,7 @@ Route::group([
 
     /** Industry Type Route */
     Route::resource('industry-types', IndustryTypeController::class);
+
+    /** Organzation Type Route */
+    Route::resource('organization-types', OrganizationTypeController::class);
 });
