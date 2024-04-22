@@ -47,6 +47,7 @@
                                                 <a href="{{ route('admin.industry-types.destroy', $type->id) }}"
                                                     class="btn-sm btn btn-danger delete-item"><i
                                                         class="fas fa-trash-alt "></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
 
