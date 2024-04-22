@@ -98,8 +98,9 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class=" active">
-                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+            <li class="{{ setSidebarActive(['admin.dashboard']) }}">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link"><i
+                        class="fas fa-fire"></i><span>Dashboard</span></a>
 
             </li>
             <li class="menu-header">Starter</li>
@@ -124,7 +125,7 @@
                     <li class="{{ setSidebarActive(['admin.countries.*']) }}">
                         <a class="nav-link" href="{{ route('admin.countries.index') }}"> Countries</a>
                     </li>
-                    <li class="{{ setSidebarActive(['admin.states.*']) }}"><a class="nav-link" 
+                    <li class="{{ setSidebarActive(['admin.states.*']) }}"><a class="nav-link"
                             href="{{ route('admin.states.index') }}"> States</a></li>
                     <li class="{{ setSidebarActive(['admin.cities.*']) }}"><a class="nav-link"
                             href="{{ route('admin.cities.index') }}"> Cities</a></li>
