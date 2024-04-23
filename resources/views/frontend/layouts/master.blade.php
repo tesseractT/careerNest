@@ -89,6 +89,8 @@
     <x-notify::notify />
     <!-- Laravel Notify JS -->
     @notifyJs
+
+    @stack('scripts')
     <script>
         $(document).ready(function() {
             $('.datepicker').datepicker({

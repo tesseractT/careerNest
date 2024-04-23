@@ -5,7 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\CompanyEstablishmentInfoUpdateRequest;
 use App\Http\Requests\Frontend\CompanyInfoUpdateRequest;
+use App\Models\City;
 use App\Models\Company;
+use App\Models\Country;
+use App\Models\IndustryType;
+use App\Models\OrganizationType;
+use App\Models\State;
+use App\Models\TeamSize;
 use App\Traits\FileUploadTrait;
 use Auth;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +25,13 @@ class CompanyProfileController extends Controller
     function index(): View
     {
         $companyInfo = Company::where('user_id', auth()->user()->id)->first();
-        return view('frontend.company-dashboard.profile.index', compact('companyInfo'));
+        $industryTypes = IndustryType::all();
+        $organizationTypes = OrganizationType::all();
+        $teamSizes = TeamSize::all();
+        $countries = Country::all();
+        $states = State::select(['id', 'name', 'country_id'])->where('country_id', $companyInfo->country)->get();
+        $cities = City::select(['id', 'name', 'state_id', 'country_id'])->where('state_id', $companyInfo->state)->get();
+        return view('frontend.company-dashboard.profile.index', compact('companyInfo', 'industryTypes', 'organizationTypes', 'teamSizes', 'countries', 'states', 'cities'));
     }
 
     function updateCompanyInfo(CompanyInfoUpdateRequest $request): RedirectResponse
@@ -40,6 +52,13 @@ class CompanyProfileController extends Controller
             ],
             $data
         );
+
+        if (isCompanyProfileComplete()) {
+            Company::where('user_id', auth()->user()->id)->update([
+                'profile_completed' => 1,
+                'visibility' => 1,
+            ]);
+        }
 
         notify()->success('Company Info Updated Successfully');
 
@@ -70,6 +89,13 @@ class CompanyProfileController extends Controller
                 'map_link' => $request->map_link,
             ]
         );
+
+        if (isCompanyProfileComplete()) {
+            Company::where('user_id', auth()->user()->id)->update([
+                'profile_completed' => 1,
+                'visibility' => 1,
+            ]);
+        }
 
         notify()->success('Establishment Info Updated Successfully');
 

@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('slug')->unique()->nullable();
 
 
-            $table->foreignId('industry_type_id')->constrained('industry_types')->onDelete('cascade');
-            $table->foreignId('organization_type_id')->constrained('organization_types')->onDelete('cascade');
-            $table->foreignId('team_size_id')->constrained('team_sizes')->onDelete('cascade');
+            $table->foreignId('industry_type_id')->nullable();
+            $table->foreignId('organization_type_id')->nullable();
+            $table->foreignId('team_size_id')->nullable();
 
 
             $table->string('logo')->nullable();
