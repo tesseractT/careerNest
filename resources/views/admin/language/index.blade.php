@@ -3,16 +3,16 @@
 @section('contents')
     <section class="section">
         <div class="section-header">
-            <h1>Industry Type</h1>
+            <h1>Languages</h1>
         </div>
 
         <div class="section-body">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>All Industry Types</h4>
+                        <h4>All Languages</h4>
                         <div class="card-header-form">
-                            <form action="{{ route('admin.industry-types.index') }}" method="GET">
+                            <form action="{{ route('admin.languages.index') }}" method="GET">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search" name="search"
                                         value="{{ request('search') }}">
@@ -23,7 +23,7 @@
                                 </div>
                             </form>
                         </div>
-                        <a href="{{ route('admin.industry-types.create') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.languages.create') }}" class="btn btn-primary">
                             <i class="fas fa-plus"></i>
                             Create New</a>
                     </div>
@@ -36,15 +36,15 @@
                                     <th style="width: 10%">Action</th>
                                 </tr>
                                 <tbody>
-                                    @forelse ($industryTypes as $type)
+                                    @forelse ($languages as $language)
                                         <tr>
-                                            <td>{{ $type->name }}</td>
-                                            <td>{{ $type->slug }}</td>
+                                            <td>{{ $language->name }}</td>
+                                            <td>{{ $language->slug }}</td>
 
                                             <td>
-                                                <a href="{{ route('admin.industry-types.edit', $type->id) }}"
+                                                <a href="{{ route('admin.languages.edit', $language->id) }}"
                                                     class="btn-sm btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                <a href="{{ route('admin.industry-types.destroy', $type->id) }}"
+                                                <a href="{{ route('admin.languages.destroy', $language->id) }}"
                                                     class="btn-sm btn btn-danger delete-item"><i
                                                         class="fas fa-trash-alt "></i></a>
                                             </td>
@@ -61,8 +61,8 @@
                     </div>
                     <div class="card-footer text-right">
                         <nav class="d-inline-block">
-                            @if ($industryTypes->hasPages())
-                                {{ $industryTypes->withQueryString()->links() }}
+                            @if ($languages->hasPages())
+                                {{ $languages->withQueryString()->links() }}
                             @endif
                         </nav>
                     </div>

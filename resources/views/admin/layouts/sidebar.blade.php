@@ -105,7 +105,8 @@
             </li>
             <li class="menu-header">Starter</li>
 
-            <li class="dropdown {{ setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*']) }}">
+            <li
+                class="dropdown {{ setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*', 'admin.languages.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Attributes</span></a>
                 <ul class="dropdown-menu">
@@ -113,6 +114,9 @@
                             href="{{ route('admin.industry-types.index') }}">Industry Type</a></li>
                     <li class="{{ setSidebarActive(['admin.organization-types.*']) }}"><a class="nav-link"
                             href="{{ route('admin.organization-types.index') }}">Organization Type</a>
+                    </li>
+                    <li class="{{ setSidebarActive(['admin.languages.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.languages.index') }}">Languages</a>
                     </li>
 
                 </ul>

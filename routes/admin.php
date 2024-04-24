@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\StateController;
@@ -63,7 +64,10 @@ Route::group([
     /** State Route */
     Route::resource('states', StateController::class);
 
-    /** City Controller */
+    /** City Route */
     Route::resource('cities', CityController::class);
     Route::get('get-states/{country_id}', [LocationController::class, 'getStatesOfCountry'])->name('get-states');
+
+    /** Language Route */
+    Route::resource('languages', LanguageController::class);
 });
