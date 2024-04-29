@@ -49,6 +49,113 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $user_id
+ * @property int|null $experience_id
+ * @property int|null $profession_id
+ * @property string|null $title
+ * @property string|null $full_name
+ * @property string|null $image
+ * @property string|null $slug
+ * @property string|null $gender
+ * @property string|null $website
+ * @property string|null $phone_one
+ * @property string|null $phone_two
+ * @property string|null $cv
+ * @property string|null $bio
+ * @property string|null $marital_status
+ * @property string|null $dob
+ * @property string|null $address
+ * @property int|null $city
+ * @property int|null $state
+ * @property int|null $country
+ * @property string|null $status
+ * @property int $profile_complete
+ * @property int $visibility
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateLanguage> $language
+ * @property-read int|null $language_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateSkill> $skill
+ * @property-read int|null $skill_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereBio($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereCv($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereDob($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereExperienceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereMaritalStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate wherePhoneOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate wherePhoneTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereProfessionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereProfileComplete($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereVisibility($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereWebsite($value)
+ */
+	class Candidate extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $candidate_id
+ * @property int $language_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereCandidateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereLanguageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereUpdatedAt($value)
+ */
+	class CandidateLanguage extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $candidate_id
+ * @property int $skill_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill whereCandidateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill whereSkillId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill whereUpdatedAt($value)
+ */
+	class CandidateSkill extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property int $state_id
  * @property int $country_id
@@ -161,6 +268,25 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereUpdatedAt($value)
+ */
+	class Experience extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
  * @property string|null $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -251,10 +377,20 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Skill findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Skill newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Skill newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Skill query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Skill withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Skill extends \Eloquent {}

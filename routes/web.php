@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\CandidateDashboardController;
+use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -32,6 +33,11 @@ require __DIR__ . '/auth.php';
 Route::get('get-state/{country_id}', [LocationController::class, 'getState'])->name('get-states');
 Route::get('get-city/{state_id}', [LocationController::class, 'getCity'])->name('get-cities');
 
+
+
+
+
+
 /** Candidate Route */
 Route::group(
     [
@@ -41,6 +47,9 @@ Route::group(
     ],
     function () {
         Route::get('/dashboard', [CandidateDashboardController::class, 'index'])->middleware([])->name('dashboard');
+        Route::get('/profile', [CandidateProfileController::class, 'index'])->name('profile.index');
+        Route::post('/profile/basic-info-update', [CandidateProfileController::class, 'basicInfoUpdate'])->name('profile.basic-info.update');
+        Route::post('/profile/profile-info-update', [CandidateProfileController::class, 'profileInfoUpdate'])->name('profile.profile-info.update');
     }
 );
 
