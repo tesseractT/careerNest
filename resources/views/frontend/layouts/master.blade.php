@@ -13,27 +13,35 @@
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="">
-    @notifyCss
+
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <title>joblist - Job Portal HTML Template </title>
 </head>
 
 <body>
 
 
+
     <!-- Preloader -->
 
-    <div id="preloader-active">
+    <div class="preloader_demo d-none">
+        <div class="img">
+            <img src="{{ asset('frontend/assets/imgs/template/loading.gif') }}" alt="careernest">
+        </div>
+    </div>
+
+    {{-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="text-center"><img src="{{ asset('frontend/assets/imgs/template/loading.gif') }}"
                         alt="joblist"></div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     @include('frontend.layouts.header')
 
@@ -86,28 +94,14 @@
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- Laravel Notify -->
-    <x-notify::notify />
-    <!-- Laravel Notify JS -->
-    @notifyJs
+
 
     @stack('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.datepicker').datepicker({
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                todayHighlight: true,
-            });
-        });
 
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
+    @include('frontend.layouts.scripts')
 
 </body>
 

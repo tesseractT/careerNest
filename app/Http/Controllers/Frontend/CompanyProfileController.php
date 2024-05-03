@@ -12,6 +12,7 @@ use App\Models\IndustryType;
 use App\Models\OrganizationType;
 use App\Models\State;
 use App\Models\TeamSize;
+use App\Services\Notify;
 use App\Traits\FileUploadTrait;
 use Auth;
 use Illuminate\Http\RedirectResponse;
@@ -60,7 +61,8 @@ class CompanyProfileController extends Controller
             ]);
         }
 
-        notify()->success('Company Info Updated Successfully');
+        Notify::updatedNotification();
+
 
         return redirect()->back();
     }
@@ -97,7 +99,7 @@ class CompanyProfileController extends Controller
             ]);
         }
 
-        notify()->success('Establishment Info Updated Successfully');
+        Notify::updatedNotification();
 
         return redirect()->back();
     }
@@ -111,7 +113,7 @@ class CompanyProfileController extends Controller
 
         Auth::user()->update($validatedData);
 
-        notify()->success('Account Info Updated Successfully');
+        Notify::updatedNotification();
 
         return redirect()->back();
     }
@@ -126,7 +128,7 @@ class CompanyProfileController extends Controller
             'password' => bcrypt($validatedData['password'])
         ]);
 
-        notify()->success('Password Updated Successfully');
+        Notify::updatedNotification();
 
         return redirect()->back();
     }

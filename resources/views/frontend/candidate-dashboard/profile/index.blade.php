@@ -36,8 +36,9 @@
 
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                aria-selected="false">Experience & Education</button>
+                                data-bs-target="#pills-experience-education" type="button" role="tab"
+                                aria-controls="pills-experience-education" aria-selected="false">Experience &
+                                Education</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
@@ -54,6 +55,7 @@
                         @include('frontend.candidate-dashboard.profile.sections.profile-section')
 
                         {{-- Experience & Education Section --}}
+                        @include('frontend.candidate-dashboard.profile.sections.experience-education-section')
                         {{-- <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                             aria-labelledby="pills-contact-tab">
                             <form action="{{ route('company.profile.account-info') }}" method="POST">
@@ -123,55 +125,245 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="experienceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Experience</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="experienceForm">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="font-sm color-text-mutted mb-10">Company * </label>
+                                    <input class="form-control" type="text" value="" required name="company">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-sm color-text-mutted mb-10">Department * </label>
+                                    <input class="form-control" type="text" value="" required name="department">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-sm color-text-mutted mb-10">Designation * </label>
+                                    <input class="form-control" type="text" value="" required name="designation">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-sm color-text-mutted mb-10">Start Date * </label>
+                                    <input class="form-control datepicker" required type="text" value=""
+                                        name="start_date">
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-sm color-text-mutted mb-10">End Date * </label>
+                                    <input class="form-control datepicker" required type="text" value=""
+                                        name="end_date">
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check form-group form-check-inline">
+                                    <label class="font-check-label">Currently Employed</label>
+                                    <input class="form-check-input" value="1" type="checkbox"
+                                        style="margin-right:10px" value="" name="currently_working">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="font-sm color-text-mutted mb-10">Responsibilities * </label>
+                                    <textarea class="form-control" maxlength="500" name="responsibilities" id="" cols="30"
+                                        rows="10"></textarea>
+
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save
+                                    Experience</button>
+                            </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 @endsection
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('.country').on('change', function() {
-                let country_id = $(this).val();
-                //Remove all previous cities
-                $('.city').html('<option value="">Select City</option>');
+            var editId = "";
+            var editMode = false;
+
+            // Fetch Experiences
+            function fetchExperiences() {
                 $.ajax({
                     method: 'GET',
-                    url: '{{ route('get-states', ':id') }}'.replace(":id", country_id),
-                    data: {},
+                    url: "{{ route('candidate.experience.index') }}",
                     success: function(response) {
-                        let html = '';
-                        $.each(response, function(index, value) {
-                            html +=
-                                `<option value="${value.id}">${value.name}</option>`;
-                        });
-
-                        $('.state').html(html);
+                        $('.experience-tbody').html(response);
                     },
                     error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                })
+            }
 
+            // Save Experience Form
+            $('#experienceForm').on('submit', function(event) {
+                event.preventDefault();
+                const formData = $(this).serialize();
+
+                if (editMode) {
+                    $.ajax({
+                        method: 'PUT',
+                        url: "{{ route('candidate.experience.update', ':id') }}".replace(':id',
+                            editId),
+                        data: formData,
+                        beforeSend: function() {
+                            showLoader();
+                        },
+                        success: function(response) {
+                            fetchExperiences();
+                            $('#experienceForm').trigger('reset');
+                            $('#experienceModal').modal('hide');
+                            editId = "";
+                            editMode = false;
+                            hideLoader();
+                            notyf.success(response.message);
+
+                        },
+                        error: function(xhr, status, error) {
+                            const errors = xhr.responseJSON.errors;
+                            if (errors) {
+                                for (const key in errors) {
+
+                                    notyf.error(errors[key][0]);
+                                }
+
+                            }
+                            hideLoader();
+                        }
+                    })
+                } else {
+                    $.ajax({
+                        method: 'POST',
+                        url: "{{ route('candidate.experience.store') }}",
+                        data: formData,
+                        beforeSend: function() {
+                            showLoader();
+                        },
+                        success: function(response) {
+                            fetchExperiences();
+                            $('#experienceForm').trigger('reset');
+                            $('#experienceModal').modal('hide');
+                            hideLoader();
+                            notyf.success(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            const errors = xhr.responseJSON.errors;
+                            if (errors) {
+                                for (const key in errors) {
+                                    notyf.error(errors[key][0]);
+                                }
+                            }
+                            hideLoader();
+                        }
+                    })
+                }
+
+
+            })
+
+            // Edit Experience Form
+            $('body').on('click', '.edit-experience', function(event) {
+                $('#experienceForm').trigger('reset');
+                let url = $(this).attr('href');
+
+                $.ajax({
+                    method: 'GET',
+                    url: url,
+                    beforeSend: function() {
+                        showLoader();
+                    },
+                    success: function(response) {
+                        editMode = true;
+                        editId = response.id;
+                        $.each(response, function(index, value) {
+                            $(`input[name="${index}"]:text`).val(value);
+                            if (index === 'currently_working' && value == 1) {
+                                $(`input[name="${index}"]:checkbox`).prop('checked',
+                                    true);
+                            }
+                            if (index === 'responsibilities') {
+                                $(`textarea[name="${index}"]`).val(value);
+                            }
+                        })
+                        hideLoader();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                        hideLoader();
                     }
                 })
             })
 
-            // Get City
-            $('.state').on('change', function() {
-                let state_id = $(this).val();
-
-                $.ajax({
-                    method: 'GET',
-                    url: '{{ route('get-cities', ':id') }}'.replace(":id", state_id),
-                    data: {},
-                    success: function(response) {
-                        let html = '';
-                        $.each(response, function(index, value) {
-                            html +=
-                                `<option value="${value.id}">${value.name}</option>`;
-                        });
-
-                        $('.city').html(html);
-                    },
-                    error: function(xhr, status, error) {
-
+            // Delete Experience
+            $('body').on('click', '.delete-experience', function(event) {
+                event.preventDefault();
+                let url = $(this).attr('href');
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            beforeSend: function() {
+                                showLoader();
+                            },
+                            success: function(response) {
+                                notyf.success(response.message);
+                                fetchExperiences();
+                                hideLoader();
+                                // window.location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr);
+                                notyf.error(xhr.responseJSON.message);
+                                hideLoader();
+                            }
+                        })
                     }
-                })
+                });
             })
+
+
         })
     </script>
 @endpush
