@@ -113,6 +113,17 @@ namespace App\Models{
 /**
  * 
  *
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation query()
+ */
+	class CandidateEducation extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property int $id
  * @property int $candidate_id
  * @property string $company

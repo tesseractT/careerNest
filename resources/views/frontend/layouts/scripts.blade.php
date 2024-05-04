@@ -9,10 +9,20 @@
 
 
     $(document).ready(function() {
+
+        // Datepicker
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true,
             todayHighlight: true,
+        });
+
+        // Year picker
+        $('.yearpicker').datepicker({
+            format: 'yyyy',
+            viewMode: "years",
+            minViewMode: "years",
+            autoclose: true,
         });
     });
 

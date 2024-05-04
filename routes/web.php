@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\CandidateDashboardController;
+use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
@@ -52,6 +53,7 @@ Route::group(
         Route::post('/profile/basic-info-update', [CandidateProfileController::class, 'basicInfoUpdate'])->name('profile.basic-info.update');
         Route::post('/profile/profile-info-update', [CandidateProfileController::class, 'profileInfoUpdate'])->name('profile.profile-info.update');
         Route::resource('experience', CandidateExperienceController::class);
+        Route::resource('education', CandidateEducationController::class);
     }
 );
 

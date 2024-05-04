@@ -9722,3 +9722,7 @@ footer .color-text-paragraph {
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
+
+/* .modal.fade {
+    z-index: 10000000 !important;
+} */
