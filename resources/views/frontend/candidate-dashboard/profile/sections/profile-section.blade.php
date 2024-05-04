@@ -75,7 +75,10 @@
                         name="your_skills[]" multiple="">
                         <option value="">Select One</option>
                         @foreach ($skills as $skill)
-                            <option @selected(in_array($skill->id, $candidate?->skill->pluck('skill_id')->toArray()) ?? []) value="{{ $skill->id }}">
+                            @php
+                                $candidateSkills = $candidate?->skills->pluck('skill_id')->toArray() ?? [];
+                            @endphp
+                            <option @selected(in_array($skill->id, $candidateSkills)) value="{{ $skill->id }}">
                                 {{ $skill->name }}</option>
                         @endforeach
                     </select>
@@ -91,7 +94,10 @@
                         name="your_languages[]" multiple="">
                         <option value="">Select One</option>
                         @foreach ($languages as $language)
-                            <option @selected(in_array($language->id, $candidate?->language->pluck('language_id')->toArray()) ?? []) value="{{ $language->id }}">
+                            @php
+                                $candidateLanguages = $candidate?->language->pluck('language_id')->toArray() ?? [];
+                            @endphp
+                            <option @selected(in_array($language->id, $candidateLanguages)) value="{{ $language->id }}">
                                 {{ $language->name }}</option>
                         @endforeach
                     </select>

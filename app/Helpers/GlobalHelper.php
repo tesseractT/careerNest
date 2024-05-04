@@ -2,6 +2,7 @@
 
 /** Check Input Error */
 
+use App\Models\Candidate;
 use App\Models\Company;
 
 if (!function_exists('hasError')) {
@@ -27,7 +28,7 @@ if (!function_exists('setSidebarActive')) {
     }
 }
 
-/** Check Profile Completion */
+/** Check Company Profile Completion */
 
 if (!function_exists('isCompanyProfileComplete')) {
 
@@ -52,6 +53,38 @@ if (!function_exists('isCompanyProfileComplete')) {
 
         foreach ($requiredFields as $field) {
             if (empty($companyProfile->{$field})) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+/** Check Candidate Profile Completion */
+
+if (!function_exists('isCandidateProfileComplete')) {
+
+    function isCandidateProfileComplete(): bool
+    {
+        $requiredFields = [
+            'experience_id',
+            'profession_id',
+            'image',
+            'full_name',
+            'dob',
+            'gender',
+            'bio',
+            'marital_status',
+            'country',
+            'status'
+
+        ];
+
+        $candidateProfile = Candidate::where('user_id', auth()->user()->id)->first();
+
+        foreach ($requiredFields as $field) {
+            if (empty($candidateProfile->{$field})) {
                 return false;
             }
         }

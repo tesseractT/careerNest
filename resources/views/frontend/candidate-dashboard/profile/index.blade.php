@@ -41,8 +41,8 @@
                                 Education</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                            <button class="nav-link" id="pills-account-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account"
                                 aria-selected="false">Account Settings</button>
                         </li>
                     </ul>
@@ -56,6 +56,9 @@
 
                         {{-- Experience & Education Section --}}
                         @include('frontend.candidate-dashboard.profile.sections.experience-education-section')
+
+                        {{-- Account Settings Section --}}
+                        @include('frontend.candidate-dashboard.profile.sections.account-settings-section')
                         {{-- <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                             aria-labelledby="pills-contact-tab">
                             <form action="{{ route('company.profile.account-info') }}" method="POST">

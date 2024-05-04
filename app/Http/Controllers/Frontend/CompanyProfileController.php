@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Frontend\CompanyEstablishmentInfoUpdateRequest;
-use App\Http\Requests\Frontend\CompanyInfoUpdateRequest;
+use Auth;
 use App\Models\City;
+use App\Models\State;
 use App\Models\Company;
 use App\Models\Country;
-use App\Models\IndustryType;
-use App\Models\OrganizationType;
-use App\Models\State;
 use App\Models\TeamSize;
 use App\Services\Notify;
-use App\Traits\FileUploadTrait;
-use Auth;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\IndustryType;
+use Illuminate\Http\Request;
+use App\Traits\FileUploadTrait;
+use App\Models\OrganizationType;
 use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\Frontend\CompanyInfoUpdateRequest;
+use App\Http\Requests\Frontend\CompanyEstablishmentInfoUpdateRequest;
 
 class CompanyProfileController extends Controller
 {
