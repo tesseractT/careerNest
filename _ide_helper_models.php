@@ -271,6 +271,12 @@ namespace App\Models{
  * @property int $visibility
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\City|null $companyCity
+ * @property-read \App\Models\Country|null $companyCountry
+ * @property-read \App\Models\IndustryType|null $companyIndustry
+ * @property-read \App\Models\TeamSize|null $companySize
+ * @property-read \App\Models\State|null $companyState
+ * @property-read \App\Models\OrganizationType|null $organizationType
  * @method static \Illuminate\Database\Eloquent\Builder|Company findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()

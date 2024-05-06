@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\CandidateExperienceController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
+use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\ProfileController;
@@ -34,6 +35,10 @@ require __DIR__ . '/auth.php';
 
 Route::get('get-state/{country_id}', [LocationController::class, 'getState'])->name('get-states');
 Route::get('get-city/{state_id}', [LocationController::class, 'getCity'])->name('get-cities');
+
+/** Company Route */
+Route::get('companies', [FrontendCompanyPageController::class, 'index'])->name('companies.index');
+Route::get('companies/{slug}', [FrontendCompanyPageController::class, 'show'])->name('companies.show');
 
 
 

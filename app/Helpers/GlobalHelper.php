@@ -92,3 +92,14 @@ if (!function_exists('isCandidateProfileComplete')) {
         return true;
     }
 }
+
+
+/** Format Date */
+
+if (!function_exists('formatDate')) {
+
+    function formatDate(?string $date): ?String
+    {
+        return date('d M, Y', strtotime($date));
+    }
+}
