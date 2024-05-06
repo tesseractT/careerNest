@@ -31,7 +31,7 @@
 
 
     <!-- Pricing Plan Section -->
-    {{-- @include('frontend.home.sections.pricing-plan-section') --}}
+    @include('frontend.home.sections.pricing-plan-section')
 
     <!-- Jobs by Location Section -->
     {{-- @include('frontend.home.sections.jobs-by-location-section') --}}

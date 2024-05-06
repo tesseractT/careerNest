@@ -99,7 +99,18 @@
                                         <select name="frontend_show"
                                             class="form-control {{ hasError($errors, 'frontend_show') }}">
                                             <option @selected($plan->frontend_show === 1) value="1">Yes</option>
-                                            <option @selected($plan->frontend_show === 1) value="0">No</option>
+                                            <option @selected($plan->frontend_show === 0) value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="show_at_home">Show at Home</label>
+                                        <select name="show_at_home"
+                                            class="form-control {{ hasError($errors, 'show_at_home') }}">
+                                            <option @selected($plan->show_at_home === 1) value="1">Yes</option>
+                                            <option @selected($plan->show_at_home === 0) value="0">No</option>
                                         </select>
                                     </div>
                                 </div>

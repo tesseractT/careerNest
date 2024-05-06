@@ -101,6 +101,17 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="show_at_home">Show in Home</label>
+                                        <select name="show_at_home"
+                                            class="form-control {{ hasError($errors, 'show_at_home') }}">
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <button class="btn btn-primary">Create</button>
                                 </div>

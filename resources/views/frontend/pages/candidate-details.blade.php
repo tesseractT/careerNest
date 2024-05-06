@@ -40,7 +40,7 @@
                         </div> --}}
                     </div>
 
-                    @if ($candidate->cv)
+                    @if ($candidate?->cv)
                         <div class="col-lg-4 col-md-12 text-lg-end"><a class="btn btn-download-icon btn-apply btn-apply-big"
                                 href="{{ asset($candidate?->cv) }}">Download CV</a></div>
                     @endif
@@ -74,15 +74,16 @@
                                     <h4>Experience</h4>
                                     <ul class="timeline">
 
-                                        @foreach ($candidate->experiences as $experience)
+                                        @foreach ($candidate?->experiences as $candidateExperience)
                                             <li>
                                                 <a href="#"
-                                                    class="float-right">{{ formatDate($experience->start_date) }} -
-                                                    {{ $experience->currently_working ? 'Current' : formatDate($experience->end_date) }}</a>
-                                                <a href="javascript:;">{{ $experience->designation }}</a> |
-                                                <span>{{ $experience->department }}</span>
-                                                <p>{{ $experience->company }}</p>
-                                                <p>{{ $experience->responsibilities }}</p>
+                                                    class="float-right">{{ formatDate($candidateExperience?->start_date) }}
+                                                    -
+                                                    {{ $candidateExperience?->currently_working ? 'Current' : formatDate($candidateExperience?->end_date) }}</a>
+                                                <a href="javascript:;">{{ $candidateExperience?->designation }}</a> |
+                                                <span>{{ $candidateExperience?->department }}</span>
+                                                <p>{{ $candidateExperience?->company }}</p>
+                                                <p>{{ $candidateExperience?->responsibilities }}</p>
                                             </li>
                                         @endforeach
 
@@ -95,13 +96,13 @@
                                     <h4>Education</h4>
                                     <ul class="timeline">
 
-                                        @foreach ($candidate->educations as $education)
+                                        @foreach ($candidate?->educations as $education)
                                             <li>
                                                 <a href="#"
-                                                    class="float-right">{{ formatDate($education->year) }}</a>
-                                                <a href="javascript:;">{{ $education->level }}</a>
-                                                <p>{{ $education->degree }}</p>
-                                                <p>{{ $education->note }}</p>
+                                                    class="float-right">{{ formatDate($education?->year) }}</a>
+                                                <a href="javascript:;">{{ $education?->level }}</a>
+                                                <p>{{ $education?->degree }}</p>
+                                                <p>{{ $education?->note }}</p>
                                             </li>
                                         @endforeach
 
