@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\StateController;
@@ -78,4 +79,7 @@ Route::group([
 
     /** Skills Route */
     Route::resource('skills', SkillController::class);
+
+    /** Plan Route */
+    Route::resource('plans', PlanController::class);
 });
