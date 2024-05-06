@@ -74,8 +74,17 @@ namespace App\Models{
  * @property int $visibility
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\City|null $companyCity
+ * @property-read \App\Models\Country|null $companyCountry
+ * @property-read \App\Models\State|null $companyState
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateEducation> $educations
+ * @property-read int|null $educations_count
+ * @property-read \App\Models\Experience|null $experience
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateExperience> $experiences
+ * @property-read int|null $experiences_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateLanguage> $language
  * @property-read int|null $language_count
+ * @property-read \App\Models\Profession|null $profession
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateSkill> $skill
  * @property-read int|null $skill_count
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate findSimilarSlugs(string $attribute, array $config, string $slug)
@@ -182,6 +191,7 @@ namespace App\Models{
  * @property int $language_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Language $languages
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage query()
@@ -203,6 +213,7 @@ namespace App\Models{
  * @property int $skill_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Skill $skills
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill query()
