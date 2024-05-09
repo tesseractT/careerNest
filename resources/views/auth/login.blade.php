@@ -37,7 +37,7 @@
                                         <input class="form-control  {{ $errors->has('password') ? 'is-invalid' : '' }}"
                                             id="input-4" type="password" required="" name="password"
                                             placeholder="************">
-                                        <input-error :messages="$errors - > get('password')" class="mt-2" />
+                                        <input-error :messages="$errors->get('password')" class="mt-2" />
                                     </div>
                                 </div>
 

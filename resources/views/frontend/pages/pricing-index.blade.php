@@ -41,7 +41,8 @@
                                             <li><strike>Verified Profile</strike></li>
                                         @endif
                                     </ul>
-                                    <div><a class="btn btn-border" href="#">Choose plan</a></div>
+                                    <div><a class="btn btn-border" href="{{ route('pricing.checkout', $plan->id) }}">Choose
+                                            plan</a></div>
                                 </div>
                             </div>
                         @endforeach

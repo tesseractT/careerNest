@@ -140,9 +140,16 @@
                             href="{{ route('admin.cities.index') }}"> Cities</a></li>
                 </ul>
             </li>
-            <li class="{{ setSidebarActive(['admin.plans.*']) }}"><a class="nav-link"
+            <li class="{{ setSidebarActive(['admin.plans.index']) }}"><a class="nav-link"
                     href="{{ route('admin.plans.index') }}"><i class="far fa-square"></i> <span>Plans &
                         Prices</span></a></li>
+            <li class="{{ setSidebarActive(['admin.payment-settings.index']) }}"><a class="nav-link"
+                    href="{{ route('admin.payment-settings.index') }}"><i class="far fa-square"></i> <span>Payment
+                        Settings</span></a></li>
+            <li class="{{ setSidebarActive(['admin.site-settings.index']) }}"><a class="nav-link"
+                    href="{{ route('admin.site-settings.index') }}"><i class="far fa-square"></i> <span>Site
+                        Settings</span></a></li>
+
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank
                         Page</span></a></li> --}}
         </ul>
