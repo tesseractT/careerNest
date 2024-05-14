@@ -31,9 +31,9 @@
                                             src="{{ asset('default-uploads/paypal.png') }}" alt=""></a>
                                 </div>
                                 <div class="col-md-3">
-                                    <a href=""><img class=""
-                                            style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;"
-                                            src="https://placehold.co/600x400" alt=""></a>
+                                    <a href="{{ route('company.stripe.payment') }}"><img class=""
+                                            style="width: 200px;border-radius: 5px;border: 3px solid #1ca774; height: 100px; object-fit: contain;"
+                                            src="{{ asset('default-uploads/stripe.png') }}" alt=""></a>
                                 </div>
 
                             </div>

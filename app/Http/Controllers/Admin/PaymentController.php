@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Stripe\Stripe;
+use Stripe\Checkout\Session as StripeSession;
 
 class PaymentController extends Controller
 {
@@ -110,6 +112,65 @@ class PaymentController extends Controller
     }
 
     function paypalCancel()
+    {
+        return redirect()->route('company.payment.error')->withErrors(['error' => 'Payment Cancelled or Failed, Please try again.']);
+    }
+
+
+    //Stripe Payment
+    function payWithStripe()
+    {
+        Stripe::setApiKey(config('getewaySettings.stripe_secret_key'));
+
+        /** Calculate payable amount */
+        $payableAmount = round(Session::get('selected_plan')['price'] * config('getewaySettings.stripe_currency_rate')) * 100;
+
+        $response = StripeSession::create([
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => config('getewaySettings.stripe_currency_name'),
+                        'product_data' => [
+                            'name' => Session::get('selected_plan')['label'] . ' Package',
+                        ],
+                        'unit_amount' => $payableAmount,
+                    ],
+                    'quantity' => 1
+                ]
+            ],
+            'mode' => 'payment',
+            'success_url' => route('company.stripe.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('company.stripe.cancel'),
+        ]);
+
+        return redirect()->away($response->url);
+    }
+
+    function stripeSuccess(Request $request)
+    {
+        Stripe::setApiKey(config('getewaySettings.stripe_secret_key'));
+        $sessionId = $request->session_id;
+
+        $response = StripeSession::retrieve($sessionId);
+
+
+        if ($response->payment_status === 'paid') {
+            try {
+                OrderService::storeOrder($response->payment_intent, 'Stripe', ($response->amount_total / 100), $response->currency, 'completed');
+                OrderService::setUserPlan();
+
+                Session::forget('selected_plan');
+                return redirect()->route('company.payment.success');
+            } catch (\Exception $e) {
+                logger('Payment ERROR >> ' . $e);
+                // return redirect()->route('company.dashboard')->with('error', $e->getMessage());
+            }
+        } else {
+            return redirect()->route('company.payment.error')->withErrors(['error' => 'Payment Cancelled or Failed, Please try again.']);
+        }
+    }
+
+    function stripeCancel()
     {
         return redirect()->route('company.payment.error')->withErrors(['error' => 'Payment Cancelled or Failed, Please try again.']);
     }
