@@ -624,10 +624,20 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|SalaryType findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|SalaryType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SalaryType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SalaryType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryType whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryType whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SalaryType withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class SalaryType extends \Eloquent {}
@@ -697,6 +707,19 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|State whereUpdatedAt($value)
  */
 	class State extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class Tag extends \Eloquent {}
 }
 
 namespace App\Models{

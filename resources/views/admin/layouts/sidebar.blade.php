@@ -112,7 +112,17 @@
                         Category</span></a></li>
 
             <li
-                class="dropdown {{ setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*', 'admin.languages.*', 'admin.professions.*', 'admin.skills.*', 'admin.educations.*', 'admin.job-types.*', 'admin.salary-types.*']) }}">
+                class="dropdown {{ setSidebarActive([
+                    'admin.industry-types.*',
+                    'admin.organization-types.*',
+                    'admin.languages.*',
+                    'admin.professions.*',
+                    'admin.skills.*',
+                    'admin.educations.*',
+                    'admin.job-types.*',
+                    'admin.salary-types.*',
+                    'admin.tags.*',
+                ]) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Attributes</span></a>
                 <ul class="dropdown-menu">
@@ -138,6 +148,9 @@
                     </li>
                     <li class="{{ setSidebarActive(['admin.salary-types.*']) }}"><a class="nav-link"
                             href="{{ route('admin.salary-types.index') }}">Salary Type</a>
+                    </li>
+                    <li class="{{ setSidebarActive(['admin.tags.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.tags.index') }}">Job Tags</a>
                     </li>
                 </ul>
             </li>
