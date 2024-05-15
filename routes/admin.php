@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\JobCategoryController;
+use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrderController;
@@ -98,6 +99,9 @@ Route::group([
 
     /** Education Routes */
     Route::resource('educations', EducationController::class);
+
+    /** Job Type Route */
+    Route::resource('job-types', JobTypeController::class);
 
     /** Payment Settings Route */
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
