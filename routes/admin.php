@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\StateController;
@@ -102,6 +103,9 @@ Route::group([
 
     /** Job Type Route */
     Route::resource('job-types', JobTypeController::class);
+
+    /** Salary Type Route */
+    Route::resource('salary-types', SalaryTypeController::class);
 
     /** Payment Settings Route */
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

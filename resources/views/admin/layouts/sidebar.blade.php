@@ -112,7 +112,7 @@
                         Category</span></a></li>
 
             <li
-                class="dropdown {{ setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*', 'admin.languages.*', 'admin.professions.*', 'admin.skills.*', 'admin.educations.*', 'admin.job-types.*']) }}">
+                class="dropdown {{ setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*', 'admin.languages.*', 'admin.professions.*', 'admin.skills.*', 'admin.educations.*', 'admin.job-types.*', 'admin.salary-types.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Attributes</span></a>
                 <ul class="dropdown-menu">
@@ -133,10 +133,12 @@
                     <li class="{{ setSidebarActive(['admin.educations.*']) }}"><a class="nav-link"
                             href="{{ route('admin.educations.index') }}">Education</a>
                     </li>
-
                     <li class="{{ setSidebarActive(['admin.job-types.*']) }}"><a class="nav-link"
                             href="{{ route('admin.job-types.index') }}">Job Types</a>
-
+                    </li>
+                    <li class="{{ setSidebarActive(['admin.salary-types.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.salary-types.index') }}">Salary Type</a>
+                    </li>
                 </ul>
             </li>
             <li class="dropdown {{ setSidebarActive(['admin.countries.*', 'admin.states.*', 'admin.cities.*']) }}">
