@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tag;
+use App\Models\JobRole;
 use App\Services\Notify;
 use App\Traits\Searchable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-class TagController extends Controller
+class JobRoleController extends Controller
 {
     use Searchable;
     /**
@@ -19,10 +18,10 @@ class TagController extends Controller
      */
     public function index(): View
     {
-        $query = Tag::query();
+        $query = JobRole::query();
         $this->search($query, ['name']);
-        $tags = $query->orderBy('id', 'desc')->paginate(20);
-        return view('admin.job.tag.index', compact('tags'));
+        $jobRoles = $query->orderBy('id', 'desc')->paginate(20);
+        return view('admin.job.job-role.index', compact('jobRoles'));
     }
 
     /**
@@ -30,7 +29,7 @@ class TagController extends Controller
      */
     public function create(): View
     {
-        return view('admin.job.tag.create');
+        return view('admin.job.job-role.create');
     }
 
     /**
@@ -42,13 +41,13 @@ class TagController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        $tag = new Tag();
-        $tag->name = $request->name;
-        $tag->save();
+        $jobRole = new JobRole();
+        $jobRole->name = $request->name;
+        $jobRole->save();
 
         Notify::createdNotification();
 
-        return redirect()->route('admin.tags.index');
+        return redirect()->route('admin.job-roles.index');
     }
 
 
@@ -57,8 +56,8 @@ class TagController extends Controller
      */
     public function edit(string $id): View
     {
-        $tag = Tag::findOrFail($id);
-        return view('admin.job.tag.edit', compact('tag'));
+        $jobRole = JobRole::findOrFail($id);
+        return view('admin.job.job-role.edit', compact('jobRole'));
     }
 
     /**
@@ -70,22 +69,22 @@ class TagController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        $tag = Tag::findOrFail($id);
-        $tag->name = $request->name;
-        $tag->save();
+        $jobRole = JobRole::findOrFail($id);
+        $jobRole->name = $request->name;
+        $jobRole->save();
 
         Notify::updatedNotification();
 
-        return redirect()->route('admin.tags.index');
+        return redirect()->route('admin.job-roles.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): Response
+    public function destroy(string $id)
     {
         try {
-            Tag::findOrFail($id)->delete();
+            JobRole::findOrFail($id)->delete();
             Notify::deletedNotification();
             return response(['message' => 'success'], 200);
         } catch (\Exception $e) {

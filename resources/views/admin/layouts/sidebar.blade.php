@@ -122,6 +122,7 @@
                     'admin.job-types.*',
                     'admin.salary-types.*',
                     'admin.tags.*',
+                    'admin.job-roles.*',
                 ]) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Attributes</span></a>
@@ -151,6 +152,9 @@
                     </li>
                     <li class="{{ setSidebarActive(['admin.tags.*']) }}"><a class="nav-link"
                             href="{{ route('admin.tags.index') }}">Job Tags</a>
+                    </li>
+                    <li class="{{ setSidebarActive(['admin.job-roles.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.job-roles.index') }}">Job Roles</a>
                     </li>
                 </ul>
             </li>

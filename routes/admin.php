@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\JobCategoryController;
+use App\Http\Controllers\Admin\JobRoleController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
@@ -110,6 +111,9 @@ Route::group([
 
     /** Tag Route */
     Route::resource('tags', TagController::class);
+
+    /** Job Role Route */
+    Route::resource('job-roles', JobRoleController::class);
 
     /** Payment Settings Route */
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
