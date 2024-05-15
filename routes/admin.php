@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\JobCategoryController;
+use App\Http\Controllers\Admin\JobExperienceController;
 use App\Http\Controllers\Admin\JobRoleController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
@@ -114,6 +115,9 @@ Route::group([
 
     /** Job Role Route */
     Route::resource('job-roles', JobRoleController::class);
+
+    /** Job Experience Route */
+    Route::resource('job-experiences', JobExperienceController::class);
 
     /** Payment Settings Route */
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
