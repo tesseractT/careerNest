@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\JobCategoryController;
+use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\JobExperienceController;
 use App\Http\Controllers\Admin\JobRoleController;
 use App\Http\Controllers\Admin\JobTypeController;
@@ -97,6 +98,9 @@ Route::group([
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.show');
     Route::get('orders/invoice/{id}', [OrderController::class, 'invoice'])->name('orders.invoice');
+
+    /** Job Routes */
+    Route::resource('jobs', JobController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);

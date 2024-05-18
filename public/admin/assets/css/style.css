@@ -3966,3 +3966,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .notify {
     z-index: 9999 !important;
 }
+
+.ck-editor__editable_inline {
+    min-height: 400px;
+}

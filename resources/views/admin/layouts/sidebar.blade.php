@@ -110,6 +110,9 @@
             <li class="{{ setSidebarActive(['admin.job-categories.*']) }}"><a class="nav-link"
                     href="{{ route('admin.job-categories.index') }}"><i class="far fa-square"></i> <span>Job
                         Category</span></a></li>
+            <li class="{{ setSidebarActive(['admin.jobs.*']) }}"><a class="nav-link"
+                    href="{{ route('admin.jobs.index') }}"><i class="far fa-square"></i> <span>Job
+                        Posts</span></a></li>
 
             <li
                 class="dropdown {{ setSidebarActive([
@@ -125,7 +128,8 @@
                     'admin.job-roles.*',
                     'admin.job-experiences.*',
                 ]) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-columns"></i>
                     <span>Attributes</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setSidebarActive(['admin.industry-types.*']) }}"><a class="nav-link"
