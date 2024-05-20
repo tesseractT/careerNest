@@ -39,15 +39,21 @@ class JobController extends Controller
 
         $query = Job::query();
         $this->search($query, ['title', 'slug']);
-        $jobs = $query->orderBy('id', 'desc')->paginate(20);
+        $jobs = $query->where('company_id', auth()->user()->company->id)->orderBy('id', 'desc')->paginate(20);
         return view('frontend.company-dashboard.job.index', compact('jobs'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create(): View | RedirectResponse
     {
+        storePlanInformation();
+        $userPlan = session('user_plan');
+        if ($userPlan->job_limit <= 0) {
+            Notify::errorNotification('You have reached your job posting limit. Please upgrade your plan to post more jobs.');
+            return redirect()->back();
+        }
         $companies = Company::where(['profile_completed' => 1, 'visibility' => 1])->get();
         $categories = JobCategory::all();
         $countries = Country::all();
@@ -66,6 +72,14 @@ class JobController extends Controller
      */
     public function store(JobCreateRequest $request): RedirectResponse
     {
+        if (session('user_plan')->featured_job_limit <= 0) {
+            Notify::errorNotification('You have reached your featured job posting limit. Please upgrade your plan to post more featured jobs.');
+            return redirect()->back();
+        }
+        if (session('user_plan')->highlight_job_limit <= 0) {
+            Notify::errorNotification('You have reached your highlight job posting limit. Please upgrade your plan to post more highlight jobs.');
+            return redirect()->back();
+        }
         $job = new Job();
         $job->title = $request->title;
         $job->company_id = auth()->user()->company->id;
@@ -127,6 +141,19 @@ class JobController extends Controller
             $jobSkill->save();
         }
 
+        if ($job) {
+            $userPlan = auth()->user()->company->userPlan;
+            $userPlan->job_limit = $userPlan->job_limit - 1;
+            if ($job->featured == 1) {
+                $userPlan->featured_job_limit = $userPlan->featured_job_limit - 1;
+            }
+            if ($job->highlight == 1) {
+                $userPlan->highlight_job_limit = $userPlan->highlight_job_limit - 1;
+            }
+            $userPlan->save();
+            storePlanInformation();
+        }
+
         Notify::createdNotification();
 
         return to_route('company.jobs.index');
@@ -139,6 +166,7 @@ class JobController extends Controller
     public function edit(string $id): View
     {
         $job = Job::findOrFail($id);
+        abort_if($job->company_id !== auth()->user()->company->id, 403);
         $companies = Company::where(['profile_completed' => 1, 'visibility' => 1])->get();
         $categories = JobCategory::all();
         $countries = Country::all();
@@ -160,6 +188,7 @@ class JobController extends Controller
     public function update(JobCreateRequest $request, string $id): RedirectResponse
     {
         $job = Job::findOrFail($id);
+        abort_if($job->company_id !== auth()->user()->company->id, 403);
         $job->title = $request->title;
         $job->job_category_id = $request->category;
         $job->vacancies = $request->vacancies;
@@ -235,7 +264,7 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) : Response
+    public function destroy(string $id): Response
     {
         try {
             Job::findOrFail($id)->delete();

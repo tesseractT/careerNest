@@ -107,3 +107,16 @@ if (!function_exists('formatDate')) {
         return null;
     }
 }
+
+/** Set User Plan Info in Session*/
+
+if (!function_exists('storePlanInformation')) {
+
+    function storePlanInformation()
+    {
+        session()->forget('user_plan');
+        session([
+            'user_plan' => isset(auth()->user()?->company?->userPlan) ? auth()->user()->company->userPlan : [],
+        ]);
+    }
+}
