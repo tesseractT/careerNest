@@ -3,7 +3,7 @@
 @section('contents')
     <section class="section">
         <div class="section-header">
-            <h1> Update Job Posts</h1>
+            <h1> Update Job : {{ $job->title }}</h1>
         </div>
 
         <div class="section-body">

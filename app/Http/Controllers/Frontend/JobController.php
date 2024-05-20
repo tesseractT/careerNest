@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminJobCreateRequest;
+use App\Http\Requests\Frontend\JobCreateRequest;
 use App\Models\Benefit;
 use App\Models\City;
 use App\Models\Company;
@@ -36,10 +36,11 @@ class JobController extends Controller
      */
     public function index(): View
     {
+
         $query = Job::query();
         $this->search($query, ['title', 'slug']);
         $jobs = $query->orderBy('id', 'desc')->paginate(20);
-        return view('admin.job.index', compact('jobs'));
+        return view('frontend.company-dashboard.job.index', compact('jobs'));
     }
 
     /**
@@ -57,17 +58,17 @@ class JobController extends Controller
         $jobTypes = JobType::all();
         $tags = Tag::all();
         $skills = Skill::all();
-        return view('admin.job.create', compact('companies', 'categories', 'countries', 'salaryTypes', 'experiences', 'jobRoles', 'educations', 'jobTypes', 'tags', 'skills'));
+        return view('frontend.company-dashboard.job.create', compact('companies', 'categories', 'countries', 'salaryTypes', 'experiences', 'jobRoles', 'educations', 'jobTypes', 'tags', 'skills'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AdminJobCreateRequest $request): RedirectResponse
+    public function store(JobCreateRequest $request): RedirectResponse
     {
         $job = new Job();
         $job->title = $request->title;
-        $job->company_id = $request->company;
+        $job->company_id = auth()->user()->company->id;
         $job->job_category_id = $request->category;
         $job->vacancies = $request->vacancies;
         $job->deadline = $request->deadline;
@@ -128,15 +129,14 @@ class JobController extends Controller
 
         Notify::createdNotification();
 
-        return to_route('admin.jobs.index');
+        return to_route('company.jobs.index');
     }
-
 
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) : View
+    public function edit(string $id): View
     {
         $job = Job::findOrFail($id);
         $companies = Company::where(['profile_completed' => 1, 'visibility' => 1])->get();
@@ -151,17 +151,16 @@ class JobController extends Controller
         $jobTypes = JobType::all();
         $tags = Tag::all();
         $skills = Skill::all();
-        return view('admin.job.edit', compact('companies', 'categories', 'countries', 'salaryTypes', 'experiences', 'jobRoles', 'educations', 'jobTypes', 'tags', 'skills', 'job', 'states', 'cities'));
+        return view('frontend.company-dashboard.job.edit', compact('companies', 'categories', 'countries', 'salaryTypes', 'experiences', 'jobRoles', 'educations', 'jobTypes', 'tags', 'skills', 'job', 'states', 'cities'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(AdminJobCreateRequest $request, string $id) : RedirectResponse
+    public function update(JobCreateRequest $request, string $id): RedirectResponse
     {
         $job = Job::findOrFail($id);
         $job->title = $request->title;
-        $job->company_id = $request->company;
         $job->job_category_id = $request->category;
         $job->vacancies = $request->vacancies;
         $job->deadline = $request->deadline;
@@ -230,7 +229,7 @@ class JobController extends Controller
 
         Notify::updatedNotification();
 
-        return to_route('admin.jobs.index');
+        return to_route('company.jobs.index');
     }
 
     /**
