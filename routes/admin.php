@@ -100,6 +100,7 @@ Route::group([
     Route::get('orders/invoice/{id}', [OrderController::class, 'invoice'])->name('orders.invoice');
 
     /** Job Routes */
+    Route::post('job-status/{id}', [JobController::class, 'changeStatus'])->name('job-status.update');
     Route::resource('jobs', JobController::class);
 
     /** Job Category Routes */

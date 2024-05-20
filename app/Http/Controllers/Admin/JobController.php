@@ -93,6 +93,7 @@ class JobController extends Controller
         $job->featured = $request->featured;
         $job->highlight = $request->highlight;
         $job->description = $request->description;
+        $job->status = 'active';
         $job->save();
 
         //tags, benefits, skills
@@ -136,7 +137,7 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) : View
+    public function edit(string $id): View
     {
         $job = Job::findOrFail($id);
         $companies = Company::where(['profile_completed' => 1, 'visibility' => 1])->get();
@@ -157,7 +158,7 @@ class JobController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(AdminJobCreateRequest $request, string $id) : RedirectResponse
+    public function update(AdminJobCreateRequest $request, string $id): RedirectResponse
     {
         $job = Job::findOrFail($id);
         $job->title = $request->title;
@@ -187,6 +188,7 @@ class JobController extends Controller
         $job->featured = $request->featured;
         $job->highlight = $request->highlight;
         $job->description = $request->description;
+        $job->status = 'active';
         $job->save();
 
         //tags, benefits, skills
@@ -236,7 +238,7 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) : Response
+    public function destroy(string $id): Response
     {
         try {
             Job::findOrFail($id)->delete();
@@ -246,5 +248,19 @@ class JobController extends Controller
             logger($e);
             return response(['message' => 'Something went wrong, please try again!'], 500);
         }
+    }
+
+
+    /**
+     * Change Job Status
+     */
+    function changeStatus(string $id): Response
+    {
+        $job = Job::findOrFail($id);
+        $job->status = $job->status === 'active' ? 'pending' : 'active';
+        $job->save();
+
+        Notify::updatedNotification();
+        return response(['message' => 'success'], 200);
     }
 }
