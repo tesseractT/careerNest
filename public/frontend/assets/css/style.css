@@ -9775,3 +9775,55 @@ ul.timeline>li:before {
     width: 100%;
     box-shadow: none;
 }
+
+.job-skill {
+    background: var(--colorPrimary) !important;
+    font-size: 12px !important;
+    padding: 7px 10px !important;
+    border-radius: 5px !important;
+    color: white !important;
+}
+
+.job-skill:hover {
+    background: var(--colorPrimary) !important;
+    color: white !important;
+}
+
+.verified {
+    background: var(--colorPrimary) !important;
+    color: white !important;
+    padding: 5px 10px !important;
+    border-radius: 5px !important;
+}
+
+.verified:hover {
+    color: white !important;
+
+}
+
+.featured {
+    background: #ae00ae;
+    color: white !important;
+    padding: 5px 10px !important;
+    border-radius: 5px !important;
+}
+
+.featured:hover {
+    color: white !important;
+    background: #ae00ae !important;
+}
+
+.highlight {
+    background: #f05d04 !important;
+    color: white !important;
+    padding: 5px 10px !important;
+    border-radius: 5px !important;
+}
+
+.highlight:hover {
+    color: white !important;
+}
+
+.box-map iframe {
+    height: 30vh !important;
+}

@@ -49,6 +49,16 @@ class Job extends Model
         return $this->belongsTo(SalaryType::class, 'salary_type_id', 'id');
     }
 
+    function jobExperience(): BelongsTo
+    {
+        return $this->belongsTo(JobExperience::class, 'job_experience_id', 'id');
+    }
+
+    function jobEducation(): BelongsTo
+    {
+        return $this->belongsTo(Education::class, 'education_id', 'id');
+    }
+
     function tags(): HasMany
     {
         return $this->hasMany(JobTag::class, 'job_id', 'id');
@@ -62,5 +72,21 @@ class Job extends Model
     function skills(): HasMany
     {
         return $this->hasMany(JobSkill::class, 'job_id', 'id');
+    }
+
+
+    function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id');
+    }
+
+    function state(): BelongsTo
+    {
+        return $this->belongsTo(State::class, 'state_id', 'id');
+    }
+
+    function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
 }

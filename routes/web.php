@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FrontendJobPageController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
@@ -53,6 +54,10 @@ Route::get('candidates/{slug}', [FrontendCandidatePageController::class, 'show']
 /** Pricing Routes */
 Route::get('pricing', PricingPageController::class)->name('pricing.index');
 Route::get('checkout/{plan_id}', CheckoutPageController::class)->name('pricing.checkout');
+
+/** Find a Job Routes */
+Route::get('find-a-job', [FrontendJobPageController::class, 'index'])->name('jobs.index');
+Route::get('find-a-job/{slug}', [FrontendJobPageController::class, 'show'])->name('jobs.show');
 
 
 

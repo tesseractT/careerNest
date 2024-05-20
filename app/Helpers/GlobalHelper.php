@@ -120,3 +120,30 @@ if (!function_exists('storePlanInformation')) {
         ]);
     }
 }
+
+/** Format Location */
+if (!function_exists('formatLocation')) {
+
+    function formatLocation($country = null, $state = null, $city = null, $address = null): ?String
+    {
+        $location = '';
+
+        if ($address) {
+            $location .= $address;
+        }
+
+        if ($city) {
+            $location .= $address ? ', ' . $city : $city;
+        }
+
+        if ($state) {
+            $location .= $city ? ', ' . $state : $state;
+        }
+
+        if ($country) {
+            $location .= $state ? ', ' . $country : $country;
+        }
+
+        return $location;
+    }
+}

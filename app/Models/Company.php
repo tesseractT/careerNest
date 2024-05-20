@@ -58,4 +58,5 @@ class Company extends Model
     {
         return $this->hasOne(UserPlan::class, 'company_id', 'id');
     }
+
 }
