@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="sidebar-text-info ml-10"><span
                                         class="text-description mb-10">Location</span><strong
-                                        class="small-heading">{{ formatLocation($job->country->name, $job->state->name, $job->city->name, $job->address) }}</strong>
+                                        class="small-heading">{{ formatLocation($job->country?->name, $job->state?->name, $job->city?->name, $job->address) }}</strong>
                                 </div>
                             </div>
                         </div>
@@ -170,10 +170,10 @@
                                 <figure><img alt="joblist" src="{{ asset($job->company->logo) }}"></figure>
                                 <div class="sidebar-info"><span
                                         class="sidebar-company">{{ $job->company->name }}</span><span
-                                        class="card-location">{{ formatLocation($job->company->companyCountry->name, $job->company->companyState->name) }}</span>
+                                        class="card-location">{{ formatLocation($job->company?->companyCountry->name, $job->company?->companyState->name) }}</span>
                                     @if ($openJobs > 0)
                                         <a class="link-underline mt-15"
-                                            href="{{ route('companies.show', $job->company->slug) }}">{{ $openJobs }}
+                                            href="{{ route('companies.show', $job->company?->slug) }}">{{ $openJobs }}
                                             Open Jobs</a>
                                     @endif
 
@@ -185,7 +185,7 @@
                                 {!! $job->company->map_link !!}
                             </div>
                             <ul class="ul-disc">
-                                <li>{{ formatLocation($job->country->name, $job->state->name, $job->city->name, $job->address) }}
+                                <li>{{ formatLocation($job->country?->name, $job->state?->name, $job->city?->name, $job->address) }}
                                 </li>
                                 <li>Phone: {{ $job->company->phone }}</li>
                                 <li>Email: {{ $job->company->email }}</li>

@@ -9827,3 +9827,8 @@ ul.timeline>li:before {
 .box-map iframe {
     height: 30vh !important;
 }
+
+.job-category li a {
+    display: block;
+    padding: 4px;
+}

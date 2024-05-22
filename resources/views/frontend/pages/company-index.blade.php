@@ -79,7 +79,7 @@
                                                     class="font-xs color-text-mutted ml-10"><span>(</span><span>66</span><span>)</span></span>
                                             </div><span class="card-location">{{ $company?->companyCountry->name }}</span>
                                             <div class="mt-30"><a class="btn btn-grey-big"
-                                                    href="jobs-grid.html"><span>12</span><span> Jobs
+                                                    href="jobs-grid.html"><span>{{ $openJobs }}</span><span> Jobs
                                                         Open</span></a></div>
                                         </div>
                                     </div>

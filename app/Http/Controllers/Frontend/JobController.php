@@ -50,8 +50,8 @@ class JobController extends Controller
     {
         storePlanInformation();
         $userPlan = session('user_plan');
-        if ($userPlan->job_limit <= 0) {
-            Notify::errorNotification('You have reached your job posting limit. Please upgrade your plan to post more jobs.');
+        if ($userPlan?->job_limit <= 0) {
+            Notify::errorNotification('You have reached your job posting limit. Please upgrade or subscribe to a plan to post more jobs.');
             return redirect()->back();
         }
         $companies = Company::where(['profile_completed' => 1, 'visibility' => 1])->get();

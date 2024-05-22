@@ -116,7 +116,7 @@ if (!function_exists('storePlanInformation')) {
     {
         session()->forget('user_plan');
         session([
-            'user_plan' => isset(auth()->user()?->company?->userPlan) ? auth()->user()->company->userPlan : [],
+            'user_plan' => isset(auth()->user()?->company?->userPlan) ? auth()->user()?->company?->userPlan : null,
         ]);
     }
 }
