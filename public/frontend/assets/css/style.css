@@ -9832,3 +9832,17 @@ ul.timeline>li:before {
     display: block;
     padding: 4px;
 }
+
+.industry-active {
+    color: var(--colorPrimary) !important;
+}
+
+.org-active {
+    height: 18px !important;
+    width: 40px !important;
+}
+
+.ind-active {
+    height: 18px !important;
+    width: 40px !important;
+}

@@ -308,6 +308,9 @@ namespace App\Models{
  * @property-read \App\Models\IndustryType|null $companyIndustry
  * @property-read \App\Models\TeamSize|null $companySize
  * @property-read \App\Models\State|null $companyState
+ * @property-read \App\Models\IndustryType|null $industryType
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
  * @property-read \App\Models\OrganizationType|null $organizationType
  * @property-read \App\Models\UserPlan|null $userPlan
  * @method static \Illuminate\Database\Eloquent\Builder|Company findSimilarSlugs(string $attribute, array $config, string $slug)
@@ -416,6 +419,8 @@ namespace App\Models{
  * @property string|null $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Company> $companies
+ * @property-read int|null $companies_count
  * @method static \Illuminate\Database\Eloquent\Builder|IndustryType findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|IndustryType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|IndustryType newQuery()
@@ -765,6 +770,8 @@ namespace App\Models{
  * @property string|null $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Company> $companies
+ * @property-read int|null $companies_count
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newQuery()

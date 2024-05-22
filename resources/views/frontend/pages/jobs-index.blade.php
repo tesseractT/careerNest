@@ -23,7 +23,7 @@
                     <div class="content-page">
 
                         <div class="row display-list">
-                            @foreach ($jobs as $job)
+                            @forelse ($jobs as $job)
                                 <div class="col-xl-12 col-12">
                                     <div class="card-grid-2 hover-up"><span class="flash"></span>
                                         <div class="row">
@@ -103,18 +103,21 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                <div class="col-lg-12 col-xl-12 col-md-4">
+                                    <div class="alert alert-warning" role="alert">
+                                        <h5> No companies found! Please try again with different filters.</h5>
+                                    </div>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                     <div class="paginations">
-                        <ul class="pager">
-                            <li><a class="pager-prev" href="#"><i class="fas fa-arrow-left"></i></a></li>
-                            <li><a class="pager-number" href="#">1</a></li>
-                            <li><a class="pager-number" href="#">2</a></li>
-                            <li><a class="pager-number active" href="#">3</a></li>
-                            <li><a class="pager-number" href="#">4</a></li>
-                            <li><a class="pager-next" href="#"><i class="fas fa-arrow-right"></i></a></li>
-                        </ul>
+                        <nav class="d-inline-block">
+                            @if ($jobs->hasPages())
+                                {{ $jobs->withQueryString()->links() }}
+                            @endif
+                        </nav>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-sm-12 col-12">
@@ -247,9 +250,7 @@
 
 
                             </form>
-
                         </div>
-
                     </div>
                 </div>
             </div>

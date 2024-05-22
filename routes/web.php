@@ -1,23 +1,23 @@
 <?php
 
-use App\Http\Controllers\Admin\FrontendJobPageController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\JobController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\LocationController;
+use App\Http\Controllers\Frontend\PricingPageController;
+use App\Http\Controllers\Frontend\CheckoutPageController;
+use App\Http\Controllers\Frontend\CompanyOrderController;
+use App\Http\Controllers\Frontend\CompanyProfileController;
+use App\Http\Controllers\Frontend\FrontendJobPageController;
+use App\Http\Controllers\Frontend\CandidateProfileController;
+use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
-use App\Http\Controllers\Frontend\CandidateProfileController;
-use App\Http\Controllers\Frontend\CheckoutPageController;
-use App\Http\Controllers\Frontend\CompanyDashboardController;
-use App\Http\Controllers\Frontend\CompanyOrderController;
-use App\Http\Controllers\Frontend\CompanyProfileController;
-use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\JobController;
-use App\Http\Controllers\Frontend\LocationController;
-use App\Http\Controllers\Frontend\PricingPageController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ Route::get('candidates/{slug}', [FrontendCandidatePageController::class, 'show']
 
 /** Pricing Routes */
 Route::get('pricing', PricingPageController::class)->name('pricing.index');
-Route::get('checkout/{plan_id}', CheckoutPageController::class)->name('pricing.checkout');
+Route::get('checkout/{plxan_id}', CheckoutPageController::class)->name('pricing.checkout');
 
 /** Find a Job Routes */
 Route::get('find-a-job', [FrontendJobPageController::class, 'index'])->name('jobs.index');
