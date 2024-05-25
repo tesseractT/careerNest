@@ -58,6 +58,7 @@ Route::get('checkout/{plxan_id}', CheckoutPageController::class)->name('pricing.
 /** Find a Job Routes */
 Route::get('find-a-job', [FrontendJobPageController::class, 'index'])->name('jobs.index');
 Route::get('find-a-job/{slug}', [FrontendJobPageController::class, 'show'])->name('jobs.show');
+Route::post('apply-job/{id}', [FrontendJobPageController::class, 'applyJob'])->name('apply-jobs.store');
 
 
 

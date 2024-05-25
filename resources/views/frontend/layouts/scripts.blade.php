@@ -5,7 +5,13 @@
      * --------------------------------------------------------------------------
      */
     // Create an instance of Notyf
-    var notyf = new Notyf();
+    var notyf = new Notyf({
+        duration: 4000,
+        position: {
+            x: 'right',
+            y: 'top',
+        }
+    });
 
 
     $(document).ready(function() {
