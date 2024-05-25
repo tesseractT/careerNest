@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
+use App\Http\Controllers\Frontend\CandidateMyJobController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 
@@ -71,15 +72,21 @@ Route::group(
         'as' => 'candidate.'
     ],
     function () {
+
+        /** Dashboard Routes */
         Route::get('/dashboard', [CandidateDashboardController::class, 'index'])->middleware([])->name('dashboard');
         Route::get('/profile', [CandidateProfileController::class, 'index'])->name('profile.index');
         Route::post('/profile/basic-info-update', [CandidateProfileController::class, 'basicInfoUpdate'])->name('profile.basic-info.update');
         Route::post('/profile/profile-info-update', [CandidateProfileController::class, 'profileInfoUpdate'])->name('profile.profile-info.update');
 
+        /** My Job Routes */
+        Route::get('/applied-jobs', [CandidateMyJobController::class, 'index'])->name('applied-jobs.index');
 
+        /** Experience and Education Routes */
         Route::resource('experience', CandidateExperienceController::class);
         Route::resource('education', CandidateEducationController::class);
 
+        /** Account Settings Routes */
         Route::post('/profile/account-settings-update', [CandidateProfileController::class, 'accountSettingsUpdate'])->name('profile.account-settings.update');
         Route::post('/profile/account-email-update', [CandidateProfileController::class, 'accountEmailUpdate'])->name('profile.account-email.update');
         Route::post('/profile/account-password-update', [CandidateProfileController::class, 'accountPasswordUpdate'])->name('profile.account-password.update');
