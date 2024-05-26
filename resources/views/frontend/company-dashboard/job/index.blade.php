@@ -53,7 +53,7 @@
                                     <tr>
                                         <th style="width: 270px">Job</th>
                                         <th>Role/Category</th>
-                                        <th>Salary</th>
+                                        <th>Applications</th>
                                         <th>Deadline</th>
                                         <th>Status</th>
                                         <th style="width: 10%">Action</th>
@@ -86,17 +86,9 @@
                                                 </td>
 
                                                 <td>
-                                                    @if ($job->salary_mode === 'range')
-                                                        <b> {{ $job->min_salary }} -
-                                                            {{ $job->max_salary }}
-                                                            {{ config('settings.site_currency') }}</b>
-                                                        <br>
-                                                        <span class="text-muted"> {{ $job->salaryType->name }}</span>
-                                                    @else
-                                                        <b> {{ $job->custom_salary }}</b>
-                                                        <br>
-                                                        <span class="text-muted"> {{ $job->salaryType->name }}</span>
-                                                    @endif
+                                                    <span class="badge bg-success">
+                                                        {{ $job->applications->count() }}
+                                                    </span>
                                                 </td>
                                                 <td>{{ formatDate($job->deadline) }}</td>
                                                 <td>
@@ -108,11 +100,24 @@
                                                         <span class="badge bg-success">Active</span>
                                                     @endif
                                                 <td>
-                                                    <a href="{{ route('company.jobs.edit', $job->id) }}"
-                                                        class="btn-sm btn btn-apply mb-2"><i class="fas fa-edit"></i></a>
-                                                    <a href="{{ route('company.jobs.destroy', $job->id) }}"
-                                                        class="btn-sm btn btn-danger delete-item"><i
-                                                            class="fas fa-trash-alt "></i></a>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            <i class="fas fa-bars"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <li><a class="dropdown-item"
+                                                                    href="{{ route('company.jobs.applications', $job->id) }}">Applications</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    href="{{ route('company.jobs.edit', $job->id) }}">Edit</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item delete-item"
+                                                                    href="{{ route('company.jobs.destroy', $job->id) }}">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @empty

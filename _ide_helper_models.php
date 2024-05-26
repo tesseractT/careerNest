@@ -53,6 +53,7 @@ namespace App\Models{
  * @property int $candidate_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Candidate|null $candidate
  * @property-read \App\Models\Job|null $job
  * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob newQuery()
@@ -495,6 +496,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\AppliedJob> $applications
+ * @property-read int|null $applications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobBenefit> $benefits
  * @property-read int|null $benefits_count
  * @property-read \App\Models\JobCategory $category

@@ -120,6 +120,7 @@ Route::group(
 
         /** Job Routes */
         Route::resource('jobs', JobController::class);
+        Route::get('applications/{id}', [JobController::class, 'applications'])->name('jobs.applications');
 
         /** Payment Routes */
         Route::get('payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');

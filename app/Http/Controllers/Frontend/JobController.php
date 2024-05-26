@@ -2,31 +2,32 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Frontend\JobCreateRequest;
-use App\Models\Benefit;
-use App\Models\City;
-use App\Models\Company;
-use App\Models\Country;
-use App\Models\Education;
 use App\Models\Job;
-use App\Models\JobBenefit;
-use App\Models\JobCategory;
-use App\Models\JobExperience;
-use App\Models\JobRole;
-use App\Models\JobSkill;
-use App\Models\JobTag;
-use App\Models\JobType;
-use App\Models\SalaryType;
+use App\Models\Tag;
+use App\Models\City;
 use App\Models\Skill;
 use App\Models\State;
-use App\Models\Tag;
+use App\Models\JobTag;
+use App\Models\Benefit;
+use App\Models\Company;
+use App\Models\Country;
+use App\Models\JobRole;
+use App\Models\JobType;
+use App\Models\JobSkill;
 use App\Services\Notify;
-use App\Traits\Searchable;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Models\Education;
 use Illuminate\View\View;
+use App\Models\JobBenefit;
+use App\Models\SalaryType;
+use App\Traits\Searchable;
+use App\Models\JobCategory;
+use Illuminate\Http\Request;
+use App\Models\JobExperience;
+use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\Frontend\JobCreateRequest;
+use App\Models\AppliedJob;
 
 class JobController extends Controller
 {
@@ -38,10 +39,19 @@ class JobController extends Controller
     {
 
         $query = Job::query();
+        $query->withCount('applications');
         $this->search($query, ['title', 'slug']);
         $jobs = $query->where('company_id', auth()->user()->company->id)->orderBy('id', 'desc')->paginate(20);
         return view('frontend.company-dashboard.job.index', compact('jobs'));
     }
+
+    function applications(String $id): View
+    {
+        $applications = AppliedJob::where('job_id', $id)->paginate(20);
+        $jobTitle = Job::select('title')->where('id', $id)->first();
+        return view('frontend.company-dashboard.applications.index', compact('applications', 'jobTitle'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

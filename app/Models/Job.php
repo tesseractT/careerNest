@@ -90,4 +90,8 @@ class Job extends Model
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
 
+    function applications(): HasMany
+    {
+        return $this->hasMany(AppliedJob::class, 'job_id', 'id');
+    }
 }
