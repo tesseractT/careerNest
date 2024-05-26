@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
+use App\Http\Controllers\Frontend\CandidateJobBookmarkController;
 use App\Http\Controllers\Frontend\CandidateMyJobController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
@@ -60,6 +61,7 @@ Route::get('checkout/{plxan_id}', CheckoutPageController::class)->name('pricing.
 Route::get('find-a-job', [FrontendJobPageController::class, 'index'])->name('jobs.index');
 Route::get('find-a-job/{slug}', [FrontendJobPageController::class, 'show'])->name('jobs.show');
 Route::post('apply-job/{id}', [FrontendJobPageController::class, 'applyJob'])->name('apply-jobs.store');
+Route::get('job-bookmark/{id}', [CandidateJobBookmarkController::class, 'save'])->name('job.bookmark');
 
 
 
@@ -81,6 +83,7 @@ Route::group(
 
         /** My Job Routes */
         Route::get('/applied-jobs', [CandidateMyJobController::class, 'index'])->name('applied-jobs.index');
+        Route::get('bookmarked-jobs', [CandidateJobBookmarkController::class, 'index'])->name('bookmarked-jobs.index');
 
         /** Experience and Education Routes */
         Route::resource('experience', CandidateExperienceController::class);

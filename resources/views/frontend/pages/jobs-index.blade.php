@@ -92,23 +92,35 @@
                                                                 class="card-text-price">{{ $job->custom_salary }}</span>
                                                         </div>
                                                     @endif
+                                                    @php
+                                                        $bookmarkedIds = \App\Models\JobBookmark::where(
+                                                            'candidate_id',
+                                                            auth()->user()->candidateProfile->id,
+                                                        )
+                                                            ->pluck('job_id')
+                                                            ->toArray();
+                                                    @endphp
                                                     <div class="col-lg-5 col-5 text-end">
-                                                        <div class="btn bookmark-btn">
-                                                            <i class="far fa-bookmark"></i>
-                                                            {{-- <i class="fas fa-bookmark"></i> --}}
+                                                        <div class="btn bookmark-btn job-bookmark"
+                                                            data-id="{{ $job->id }}">
+                                                            @if (in_array($job->id, $bookmarkedIds))
+                                                                <i class="fas fa-bookmark"></i>
+                                                            @else
+                                                                <i class="far fa-bookmark"></i>
+                                                            @endif
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @empty
-                                <div class="col-lg-12 col-xl-12 col-md-4">
-                                    <div class="alert alert-warning" role="alert">
-                                        <h5> No companies found! Please try again with different filters.</h5>
+                                @empty
+                                    <div class="col-lg-12 col-xl-12 col-md-4">
+                                        <div class="alert alert-warning" role="alert">
+                                            <h5> No companies found! Please try again with different filters.</h5>
+                                        </div>
                                     </div>
-                                </div>
                             @endforelse
                         </div>
                     </div>
@@ -309,8 +321,34 @@
                     error: function(xhr, status, error) {
 
                     }
-                })
-            })
-        })
+                });
+            });
+        });
+
+        $('.job-bookmark').on('click', function(e) {
+            e.preventDefault();
+            let id = $(this).data('id');
+            $.ajax({
+                method: 'GET',
+                url: '{{ route('job.bookmark', ':id') }}'.replace(":id", id),
+                data: {},
+                success: function(response) {
+                    $('.job-bookmark').each(function() {
+                        let elementId = $(this).data('id');
+
+                        if (elementId == response.id) {
+                            $(this).find('i').addClass('fas fa-bookmark');
+                        }
+                    });
+                    notyf.success(response.message);
+                },
+                error: function(xhr, status, error) {
+                    let errors = xhr.responseJSON.errors;
+                    $.each(errors, function(key, value) {
+                        notyf.error(value[0]);
+                    });
+                },
+            });
+        });
     </script>
 @endpush
