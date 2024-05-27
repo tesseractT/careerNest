@@ -179,6 +179,17 @@
                             href="{{ route('admin.cities.index') }}"> Cities</a></li>
                 </ul>
             </li>
+            <li class="dropdown {{ setSidebarActive(['admin.hero.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-columns"></i>
+                    <span>Sections</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.hero.*']) }}">
+                        <a class="nav-link" href="{{ route('admin.hero.index') }}"> Hero</a>
+                    </li>
+
+                </ul>
+            </li>
             <li class="{{ setSidebarActive(['admin.blogs.*']) }}"><a class="nav-link"
                     href="{{ route('admin.blogs.index') }}"><i class="far fa-square"></i> <span>Blogs</span></a></li>
             <li class="{{ setSidebarActive(['admin.plans.index']) }}"><a class="nav-link"

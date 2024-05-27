@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\JobCategoryController;
 use App\Http\Controllers\Admin\JobController;
@@ -106,6 +107,9 @@ Route::group([
 
     /** Blog Routes */
     Route::resource('blogs', BlogController::class);
+
+    /** Hero Section Routes */
+    Route::resource('hero', HeroController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);
