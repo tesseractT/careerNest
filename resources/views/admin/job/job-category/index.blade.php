@@ -33,6 +33,7 @@
                                 <tr>
                                     <th>Icon</th>
                                     <th>Name</th>
+                                    <th>Is Popular</th>
                                     <th style="width: 10%">Action</th>
                                 </tr>
                                 <tbody>
@@ -42,6 +43,13 @@
                                                 <i style="font-size: 40px" class="{{ $category->icon }}"></i>
                                             </td>
                                             <td>{{ $category->name }}</td>
+
+                                            <td>
+                                                @if ($category->is_popular)
+                                                    <span class="badge badge-success">Yes</span>
+                                                @else
+                                                    <span class="badge badge-danger">No</span>
+                                                @endif
 
                                             <td>
                                                 <a href="{{ route('admin.job-categories.edit', $category->id) }}"

@@ -32,6 +32,15 @@
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
                             </div>
+
+                            <div class="form-group">
+                                <label for="">Is Popular</label>
+                                <select name="is_popular" class="form-control {{ hasError($errors, 'is_popular') }}">
+                                    <option value="1" {{ $category->is_popular ? 'selected' : '' }}>Yes</option>
+                                    <option value="0" {{ !$category->is_popular ? 'selected' : '' }}>No</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('is_popular')" class="mt-2" />
+                            </div>
                             <div class="form-group">
                                 <button class="btn btn-primary">Update</button>
                             </div>
