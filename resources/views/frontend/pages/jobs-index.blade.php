@@ -95,7 +95,7 @@
                                                     @php
                                                         $bookmarkedIds = \App\Models\JobBookmark::where(
                                                             'candidate_id',
-                                                            auth()->user()->candidateProfile->id,
+                                                            auth()?->user()?->candidateProfile?->id,
                                                         )
                                                             ->pluck('job_id')
                                                             ->toArray();
@@ -115,12 +115,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                @empty
-                                    <div class="col-lg-12 col-xl-12 col-md-4">
-                                        <div class="alert alert-warning" role="alert">
-                                            <h5> No companies found! Please try again with different filters.</h5>
-                                        </div>
+                                </div>
+                            @empty
+                                <div class="col-lg-12 col-xl-12 col-md-4">
+                                    <div class="alert alert-warning" role="alert">
+                                        <h5> No companies found! Please try again with different filters.</h5>
                                     </div>
+                                </div>
                             @endforelse
                         </div>
                     </div>
