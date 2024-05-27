@@ -179,6 +179,8 @@
                             href="{{ route('admin.cities.index') }}"> Cities</a></li>
                 </ul>
             </li>
+            <li class="{{ setSidebarActive(['admin.blogs.*']) }}"><a class="nav-link"
+                    href="{{ route('admin.blogs.index') }}"><i class="far fa-square"></i> <span>Blogs</span></a></li>
             <li class="{{ setSidebarActive(['admin.plans.index']) }}"><a class="nav-link"
                     href="{{ route('admin.plans.index') }}"><i class="far fa-square"></i> <span>Plans &
                         Prices</span></a></li>
