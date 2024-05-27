@@ -44,6 +44,16 @@
                                     <option @selected($blog->status === 0) value="0">Inactive</option>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="">Is Featured</label>
+                                <select name="is_featured" class="form-control {{ hasError($errors, 'is_featured') }}">
+                                    <option @selected($blog->is_featured === 1) value="1">Yes</option>
+                                    <option @selected($blog->is_featured === 0) value="0">No</option>
+                                </select>
+
+
+                            </div>
                             <div class="form-group">
                                 <button class="btn btn-primary">Update</button>
                             </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();
             $table->text('description');
             $table->boolean('status')->default(0);
+            $table->boolean('is_featured')->default(0);
             $table->timestamps();
         });
     }

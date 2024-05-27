@@ -24,7 +24,8 @@ class BlogController extends Controller
     {
         $query = Blog::query();
         $this->search($query, ['title', 'slug']);
-        $blogs = $query->orderBy('id', 'desc')->paginate(20);
+        $blogs = $query->where('status', 1)->orderBy('id', 'desc')->paginate(20);
+
 
         return view('admin.blog.index', compact('blogs'));
     }
@@ -50,6 +51,7 @@ class BlogController extends Controller
         $blog->author_id = auth()->user()->id;
         $blog->description = $request->description;
         $blog->status = $request->status;
+        $blog->is_featured = $request->is_featured;
         $blog->save();
 
         Notify::createdNotification();
@@ -83,6 +85,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->description = $request->description;
         $blog->status = $request->status;
+        $blog->is_featured = $request->is_featured;
         $blog->save();
 
         Notify::updatedNotification();

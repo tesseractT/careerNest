@@ -42,6 +42,13 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="">Is Featured</label>
+                                <select name="is_featured" class="form-control {{ hasError($errors, 'is_featured') }}">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <button class="btn btn-primary">Create</button>
                             </div>
                         </form>

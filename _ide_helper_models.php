@@ -95,11 +95,13 @@ namespace App\Models{
  * @property int $id
  * @property string $title
  * @property string $slug
+ * @property string $image
  * @property int $author_id
  * @property string $description
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $author
  * @method static \Illuminate\Database\Eloquent\Builder|Blog findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Blog newQuery()
@@ -108,6 +110,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereTitle($value)
