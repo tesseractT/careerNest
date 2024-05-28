@@ -837,6 +837,33 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $image
+ * @property string $title
+ * @property string $main_title
+ * @property string $sub_title
+ * @property string|null $url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereMainTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereSubTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereUrl($value)
+ */
+	class LearnMore extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property int $company_id
  * @property int $plan_id
  * @property string $package_name

@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\JobExperienceController;
 use App\Http\Controllers\Admin\JobRoleController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\LearnMoreController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
@@ -114,6 +115,9 @@ Route::group([
 
     /** Why Choose Us Routes */
     Route::resource('why-choose-us', WhyChooseUsController::class);
+
+    /** Learn More Routes */
+    Route::resource('learn-more', LearnMoreController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);
