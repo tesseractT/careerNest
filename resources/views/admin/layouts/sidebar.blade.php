@@ -179,7 +179,8 @@
                             href="{{ route('admin.cities.index') }}"> Cities</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ setSidebarActive(['admin.hero.*', 'admin.why-choose-us.*']) }}">
+            <li
+                class="dropdown {{ setSidebarActive(['admin.hero.*', 'admin.why-choose-us.*', 'admin.learn-more.*', 'admin.counter.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fas fa-columns"></i>
                     <span>Sections</span></a>
@@ -193,6 +194,8 @@
                     <li class="{{ setSidebarActive(['admin.learn-more.*']) }}">
                         <a class="nav-link" href="{{ route('admin.learn-more.index') }}"> Learn More</a>
                     </li>
+                    <li class="{{ setSidebarActive(['admin.counter.*']) }}">
+                        <a class="nav-link" href="{{ route('admin.counter.index') }}"> Counter</a>
 
                 </ul>
             </li>

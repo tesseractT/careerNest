@@ -410,6 +410,17 @@ namespace App\Models{
 /**
  * 
  *
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter query()
+ */
+	class Counter extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property int $id
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at

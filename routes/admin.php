@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
@@ -118,6 +119,9 @@ Route::group([
 
     /** Learn More Routes */
     Route::resource('learn-more', LearnMoreController::class);
+
+    /** Counter Routes */
+    Route::resource('counter', CounterController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);

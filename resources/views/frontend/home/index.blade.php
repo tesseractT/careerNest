@@ -21,7 +21,7 @@
 
 
     <!-- Counter Section -->
-    {{-- @include('frontend.home.sections.counter-section') --}}
+    @include('frontend.home.sections.counter-section')
 
 
     <!-- Recruiters Section -->

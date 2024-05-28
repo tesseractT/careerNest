@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Counter;
 use App\Models\Country;
 use App\Models\Hero;
 use App\Models\Job;
@@ -28,6 +29,7 @@ class HomeController extends Controller
         $plans = Plan::where(['frontend_show' => 1, 'show_at_home' => 1])->get();
         $featuredCategory = JobCategory::where('is_featured', 1)->take(10)->get();
         $learn = LearnMore::first();
-        return view('frontend.home.index', compact('plans', 'hero', 'jobCategories', 'countries', 'jobCount', 'popularJobCategories', 'featuredCategory', 'whyChooseUs', 'learn'));
+        $counter = Counter::first();
+        return view('frontend.home.index', compact('plans', 'hero', 'jobCategories', 'countries', 'jobCount', 'popularJobCategories', 'featuredCategory', 'whyChooseUs', 'learn', 'counter'));
     }
 }
