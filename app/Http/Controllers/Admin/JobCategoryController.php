@@ -48,6 +48,7 @@ class JobCategoryController extends Controller
         $category->icon = $request->icon;
         $category->name = $request->name;
         $category->is_popular = $request->is_popular;
+        $category->is_featured = $request->is_featured;
         $category->save();
 
         Notify::createdNotification();
@@ -80,6 +81,7 @@ class JobCategoryController extends Controller
         if ($request->filled('icon')) $category->icon = $request->icon;
         $category->name = $request->name;
         $category->is_popular = $request->is_popular;
+        $category->is_featured = $request->is_featured;
         $category->save();
 
         Notify::updatedNotification();

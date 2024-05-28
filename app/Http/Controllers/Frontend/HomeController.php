@@ -18,11 +18,12 @@ class HomeController extends Controller
         $hero = Hero::first();
         $jobCategories = JobCategory::all();
         $popularJobCategories = JobCategory::withCount(['jobs' => function ($query) {
-            $query->where(['status' => 'active'])->whereDate('deadline', '>=', date('Y-m-d'));
+            $query->where(['status' => 'active'])->where('deadline', '>=', date('Y-m-d'));
         }])->where('is_popular', 1)->get();
         $countries = Country::all();
         $jobCount = Job::count();
         $plans = Plan::where(['frontend_show' => 1, 'show_at_home' => 1])->get();
-        return view('frontend.home.index', compact('plans', 'hero', 'jobCategories', 'countries', 'jobCount', 'popularJobCategories'));
+        $featuredCategory = JobCategory::where('is_featured', 1)->take(10)->get();
+        return view('frontend.home.index', compact('plans', 'hero', 'jobCategories', 'countries', 'jobCount', 'popularJobCategories', 'featuredCategory'));
     }
 }

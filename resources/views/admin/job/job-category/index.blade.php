@@ -34,6 +34,7 @@
                                     <th>Icon</th>
                                     <th>Name</th>
                                     <th>Is Popular</th>
+                                    <th>Is Featured</th>
                                     <th style="width: 10%">Action</th>
                                 </tr>
                                 <tbody>
@@ -50,6 +51,14 @@
                                                 @else
                                                     <span class="badge badge-danger">No</span>
                                                 @endif
+                                            </td>
+                                            <td>
+                                                @if ($category->is_featured)
+                                                    <span class="badge badge-success">Yes</span>
+                                                @else
+                                                    <span class="badge badge-danger">No</span>
+                                                @endif
+                                            </td>
 
                                             <td>
                                                 <a href="{{ route('admin.job-categories.edit', $category->id) }}"

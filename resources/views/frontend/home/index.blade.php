@@ -1,7 +1,5 @@
 @extends('frontend.layouts.master')
 @section('contents')
-
-
     <!-- Hero Section -->
     @include('frontend.home.sections.hero-section')
 
@@ -12,7 +10,7 @@
 
 
     <!-- Featured Jobs Section -->
-    {{-- @include('frontend.home.sections.featured-jobs-section') --}}
+    @include('frontend.home.sections.featured-jobs-section')
 
 
     <!-- Why Choose Us Section -->

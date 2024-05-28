@@ -41,6 +41,15 @@
                                 </select>
                                 <x-input-error :messages="$errors->get('is_popular')" class="mt-2" />
                             </div>
+
+                            <div class="form-group">
+                                <label for=""> Is Featured</label>
+                                <select name="is_featured" class="form-control {{ hasError($errors, 'is_featured') }}">
+                                    <option value="1" {{ $category->is_featured ? 'selected' : '' }}>Yes</option>
+                                    <option value="0" {{ !$category->is_featured ? 'selected' : '' }}>No</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('is_featured')" class="mt-2" />
+                            </div>
                             <div class="form-group">
                                 <button class="btn btn-primary">Update</button>
                             </div>
