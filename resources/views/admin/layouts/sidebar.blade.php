@@ -179,13 +179,16 @@
                             href="{{ route('admin.cities.index') }}"> Cities</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ setSidebarActive(['admin.hero.*']) }}">
+            <li class="dropdown {{ setSidebarActive(['admin.hero.*', 'admin.why-choose-us.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fas fa-columns"></i>
                     <span>Sections</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setSidebarActive(['admin.hero.*']) }}">
                         <a class="nav-link" href="{{ route('admin.hero.index') }}"> Hero</a>
+                    </li>
+                    <li class="{{ setSidebarActive(['admin.why-choose-us.*']) }}">
+                        <a class="nav-link" href="{{ route('admin.why-choose-us.index') }}"> Why Choose Us</a>
                     </li>
 
                 </ul>

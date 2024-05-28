@@ -14,7 +14,7 @@
 
 
     <!-- Why Choose Us Section -->
-    {{-- @include('frontend.home.sections.why-choose-us-section') --}}
+    @include('frontend.home.sections.why-choose-us-section')
 
     <!-- Learn More Section -->
     {{-- @include('frontend.home.sections.learn-more-section') --}}

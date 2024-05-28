@@ -53,7 +53,7 @@
                                                 {{ Str::limit(strip_tags($job->description), '100', '...') }}</p>
                                             <div class="mt-30">
                                                 @foreach ($job->skills as $jobSkill)
-                                                    @if ($loop->index <= 4)
+                                                    @if ($loop->index <= 0)
                                                         <a class="btn btn-grey-small mr-5"
                                                             href="javascript:;">{{ $jobSkill->skill->name }}</a>
                                                     @elseif($loop->index == 6)

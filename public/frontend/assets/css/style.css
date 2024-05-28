@@ -9846,3 +9846,15 @@ ul.timeline>li:before {
     height: 18px !important;
     width: 40px !important;
 }
+
+.number-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-element i {
+    font-size: 35px;
+    margin-top: 5px;
+
+}

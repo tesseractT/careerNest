@@ -671,6 +671,8 @@ namespace App\Models{
  * @property string $icon
  * @property string $name
  * @property string $slug
+ * @property int $is_popular
+ * @property int $is_featured
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
@@ -682,6 +684,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereIcon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereIsFeatured($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereIsPopular($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereUpdatedAt($value)
@@ -1169,5 +1173,40 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|UserPlan whereUpdatedAt($value)
  */
 	class UserPlan extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string|null $icon_one
+ * @property string|null $title_one
+ * @property string|null $subtitle_one
+ * @property string|null $icon_two
+ * @property string|null $title_two
+ * @property string|null $subtitle_two
+ * @property string|null $icon_three
+ * @property string|null $title_three
+ * @property string|null $subtitle_three
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs query()
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereIconOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereIconThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereIconTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereSubtitleOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereSubtitleThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereSubtitleTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereTitleOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereTitleThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereTitleTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereUpdatedAt($value)
+ */
+	class WhyChooseUs extends \Eloquent {}
 }
 

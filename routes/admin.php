@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\WhyChooseUsController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
@@ -110,6 +111,9 @@ Route::group([
 
     /** Hero Section Routes */
     Route::resource('hero', HeroController::class);
+
+    /** Why Choose Us Routes */
+    Route::resource('why-choose-us', WhyChooseUsController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);
