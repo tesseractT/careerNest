@@ -25,7 +25,7 @@
 
 
     <!-- Recruiters Section -->
-    {{-- @include('frontend.home.sections.recruiters-section') --}}
+    @include('frontend.home.sections.recruiters-section')
 
 
     <!-- Pricing Plan Section -->
