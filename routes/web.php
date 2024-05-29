@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\JobController;
@@ -71,6 +72,10 @@ Route::get('blog/{slug}', [FrontendBlogPageController::class, 'show'])->name('bl
 
 /** About Route */
 Route::get('about', [AboutController::class, 'index'])->name('about.index');
+
+/** Contact Route */
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [ContactController::class, 'sendMail'])->name('send-mail');
 
 
 

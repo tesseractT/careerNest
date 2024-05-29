@@ -34,6 +34,15 @@
                         </div>
                     </div>
 
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">Site Map</label>
+                            <input type="text" class="form-control {{ hasError($errors, 'site_map') }}"
+                                name="site_map" value="{{ config('settings.site_map') }}">
+                            <x-input-error :messages="$errors->get('site_map')" class="mt-2" />
+
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="paypal_status">Site Currency</label>
@@ -41,7 +50,8 @@
                                 class="form-control {{ hasError($errors, 'site_currency') }} select2">
                                 <option value="">Select Currency</option>
                                 @foreach (config('currencies.currency_list') as $key => $currency)
-                                    <option @selected(config('settings.site_currency') === $currency) value="{{ $currency }}">{{ $currency }}
+                                    <option @selected(config('settings.site_currency') === $currency) value="{{ $currency }}">
+                                        {{ $currency }}
                                     </option>
                                 @endforeach
                             </select>
