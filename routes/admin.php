@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
@@ -126,6 +127,9 @@ Route::group([
 
     /** Review Routes */
     Route::resource('reviews', ReviewController::class);
+
+    /** About Us Routes */
+    Route::resource('abouts', AboutController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);

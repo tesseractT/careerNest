@@ -199,7 +199,16 @@
                     </li>
                     <li class="{{ setSidebarActive(['admin.reviews.*']) }}"><a class="nav-link"
                             href="{{ route('admin.reviews.index') }}"> Reviews</a></li>
-
+                </ul>
+            </li>
+            <li class="dropdown {{ setSidebarActive(['admin.abouts.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-columns"></i>
+                    <span>Pages</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.abouts.*']) }}">
+                        <a class="nav-link" href="{{ route('admin.abouts.index') }}"> About Us</a>
+                    </li>
 
                 </ul>
             </li>

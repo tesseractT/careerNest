@@ -4,22 +4,23 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\JobController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\PricingPageController;
 use App\Http\Controllers\Frontend\CheckoutPageController;
 use App\Http\Controllers\Frontend\CompanyOrderController;
+use App\Http\Controllers\Frontend\CandidateMyJobController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\FrontendJobPageController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
+use App\Http\Controllers\Frontend\FrontendBlogPageController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
-use App\Http\Controllers\Frontend\CandidateJobBookmarkController;
-use App\Http\Controllers\Frontend\CandidateMyJobController;
-use App\Http\Controllers\Frontend\FrontendBlogPageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
+use App\Http\Controllers\Frontend\CandidateJobBookmarkController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 
 /*
@@ -67,6 +68,9 @@ Route::get('job-bookmark/{id}', [CandidateJobBookmarkController::class, 'save'])
 /** Blog Route */
 Route::get('blog', [FrontendBlogPageController::class, 'index'])->name('blogs.index');
 Route::get('blog/{slug}', [FrontendBlogPageController::class, 'show'])->name('blogs.show');
+
+/** About Route */
+Route::get('about', [AboutController::class, 'index'])->name('about.index');
 
 
 

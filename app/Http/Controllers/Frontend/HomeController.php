@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Job;
+use App\Models\Blog;
+use App\Models\Hero;
+use App\Models\Plan;
+use App\Models\Review;
 use App\Models\Company;
 use App\Models\Counter;
 use App\Models\Country;
-use App\Models\Hero;
-use App\Models\Job;
-use App\Models\JobCategory;
 use App\Models\LearnMore;
-use App\Models\Plan;
-use App\Models\Review;
+use Illuminate\View\View;
+use App\Models\JobCategory;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -36,6 +37,7 @@ class HomeController extends Controller
             $query->where(['status' => 'active'])->where('deadline', '>=', date('Y-m-d'));
         }])->where(['profile_completed' => 1, 'visibility' => 1])->latest()->take(45)->get();
         $reviews = Review::latest()->take(10)->get();
-        return view('frontend.home.index', compact('plans', 'hero', 'jobCategories', 'countries', 'jobCount', 'popularJobCategories', 'featuredCategory', 'whyChooseUs', 'learn', 'counter', 'companies', 'reviews'));
+        $blogs = Blog::latest()->take(3)->get();
+        return view('frontend.home.index', compact('plans', 'hero', 'jobCategories', 'countries', 'jobCount', 'popularJobCategories', 'featuredCategory', 'whyChooseUs', 'learn', 'counter', 'companies', 'reviews', 'blogs'));
     }
 }

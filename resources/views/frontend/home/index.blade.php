@@ -38,5 +38,5 @@
     @include('frontend.home.sections.testimonials-section')
 
     <!-- News And Blog Section -->
-    {{-- @include('frontend.home.sections.news-and-blog-section') --}}
+    @include('frontend.home.sections.news-and-blog-section')
 @endsection
