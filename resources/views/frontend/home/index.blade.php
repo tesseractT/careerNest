@@ -35,7 +35,7 @@
     {{-- @include('frontend.home.sections.jobs-by-location-section') --}}
 
     <!-- Testimonials Section -->
-    {{-- @include('frontend.home.sections.testimonials-section') --}}
+    @include('frontend.home.sections.testimonials-section')
 
     <!-- News And Blog Section -->
     {{-- @include('frontend.home.sections.news-and-blog-section') --}}

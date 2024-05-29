@@ -180,7 +180,7 @@
                 </ul>
             </li>
             <li
-                class="dropdown {{ setSidebarActive(['admin.hero.*', 'admin.why-choose-us.*', 'admin.learn-more.*', 'admin.counter.*']) }}">
+                class="dropdown {{ setSidebarActive(['admin.hero.*', 'admin.why-choose-us.*', 'admin.learn-more.*', 'admin.counter.*', 'admin.reviews.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fas fa-columns"></i>
                     <span>Sections</span></a>
@@ -196,6 +196,10 @@
                     </li>
                     <li class="{{ setSidebarActive(['admin.counter.*']) }}">
                         <a class="nav-link" href="{{ route('admin.counter.index') }}"> Counter</a>
+                    </li>
+                    <li class="{{ setSidebarActive(['admin.reviews.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.reviews.index') }}"> Reviews</a></li>
+
 
                 </ul>
             </li>

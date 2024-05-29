@@ -410,9 +410,31 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property int $counter_one
+ * @property string $title_one
+ * @property int $counter_two
+ * @property string $title_two
+ * @property int $counter_three
+ * @property string $title_three
+ * @property int $counter_four
+ * @property string $title_four
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Counter newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Counter newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Counter query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCounterFour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCounterOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCounterThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCounterTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereTitleFour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereTitleOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereTitleThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereTitleTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereUpdatedAt($value)
  */
 	class Counter extends \Eloquent {}
 }
@@ -1011,6 +1033,33 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Profession withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Profession extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $image
+ * @property string $title
+ * @property string $review
+ * @property int $rating
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Review newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Review newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Review query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Review whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Review whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Review whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Review whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Review whereRating($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Review whereReview($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Review whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Review whereUpdatedAt($value)
+ */
+	class Review extends \Eloquent {}
 }
 
 namespace App\Models{

@@ -11,6 +11,7 @@ use App\Models\Job;
 use App\Models\JobCategory;
 use App\Models\LearnMore;
 use App\Models\Plan;
+use App\Models\Review;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -34,6 +35,7 @@ class HomeController extends Controller
         $companies = Company::with('companyCountry')->select('id', 'logo', 'name', 'slug', 'country')->withCount(['jobs' => function ($query) {
             $query->where(['status' => 'active'])->where('deadline', '>=', date('Y-m-d'));
         }])->where(['profile_completed' => 1, 'visibility' => 1])->latest()->take(45)->get();
-        return view('frontend.home.index', compact('plans', 'hero', 'jobCategories', 'countries', 'jobCount', 'popularJobCategories', 'featuredCategory', 'whyChooseUs', 'learn', 'counter', 'companies'));
+        $reviews = Review::latest()->take(10)->get();
+        return view('frontend.home.index', compact('plans', 'hero', 'jobCategories', 'countries', 'jobCount', 'popularJobCategories', 'featuredCategory', 'whyChooseUs', 'learn', 'counter', 'companies', 'reviews'));
     }
 }

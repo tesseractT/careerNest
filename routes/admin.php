@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SkillController;
@@ -122,6 +123,9 @@ Route::group([
 
     /** Counter Routes */
     Route::resource('counter', CounterController::class);
+
+    /** Review Routes */
+    Route::resource('reviews', ReviewController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);
