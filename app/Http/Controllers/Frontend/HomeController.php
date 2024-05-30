@@ -16,6 +16,7 @@ use App\Models\JobCategory;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\CustomPageBuilder;
 
 class HomeController extends Controller
 {
@@ -39,5 +40,11 @@ class HomeController extends Controller
         $reviews = Review::latest()->take(10)->get();
         $blogs = Blog::latest()->take(3)->get();
         return view('frontend.home.index', compact('plans', 'hero', 'jobCategories', 'countries', 'jobCount', 'popularJobCategories', 'featuredCategory', 'whyChooseUs', 'learn', 'counter', 'companies', 'reviews', 'blogs'));
+    }
+
+    function customPage($slug): View
+    {
+        $page = CustomPageBuilder::where('slug', $slug)->firstOrFail();
+        return view('frontend.pages.custom-page', compact('page'));
     }
 }

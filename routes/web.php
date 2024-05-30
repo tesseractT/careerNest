@@ -77,6 +77,9 @@ Route::get('about', [AboutController::class, 'index'])->name('about.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [ContactController::class, 'sendMail'])->name('send-mail');
 
+/** Custom Page Route */
+Route::get('page/{slug}', [HomeController::class, 'customPage'])->name('custom-page');
+
 
 
 

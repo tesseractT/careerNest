@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\CustomPageBuilderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\HeroController;
@@ -130,6 +131,9 @@ Route::group([
 
     /** About Us Routes */
     Route::resource('abouts', AboutController::class);
+
+    /** Custom Page Builder Routes */
+    Route::resource('page-builder', CustomPageBuilderController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);

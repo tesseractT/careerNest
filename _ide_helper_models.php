@@ -488,6 +488,29 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $page_name
+ * @property string $page_content
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder wherePageContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder wherePageName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class CustomPageBuilder extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
