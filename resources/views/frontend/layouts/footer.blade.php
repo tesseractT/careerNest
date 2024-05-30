@@ -1,3 +1,27 @@
+<section class="section-box subscription_box">
+    <div class="container">
+        <div class="box-newsletter">
+            <div class="newsletter_textarea">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 class="text-md-newsletter">Subscribe to our newsletter</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="box-form-newsletter">
+                            <form class="form-newsletter">
+                                @csrf
+                                <input class="input-newsletter" type="text" value=""
+                                    placeholder="Enter your email here" name="email">
+                                <button type="submit" class="btn btn-default font-heading">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <footer class="footer pt-165">
     <div class="container">
         <div class="row justify-content-between">
@@ -66,3 +90,39 @@
         </div>
     </div>
 </footer>
+
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.form-newsletter').on('submit', function(e) {
+                e.preventDefault();
+                let formData = $(this).serialize();
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route('subscribe') }}',
+                    data: formData,
+                    beforeSend: function() {
+                        $('.form-newsletter button').html('Subscribing...');
+                        $('.form-newsletter button').attr('disabled', true);
+                    },
+                    success: function(response) {
+                        $('.form-newsletter button').html('Subscribe');
+                        $('.form-newsletter button').attr('disabled', false);
+                        $('.form-newsletter')[0].reset();
+                        notyf.success(response.message);
+                    },
+
+                    error: function(xhr, status, error) {
+                        $('.form-newsletter button').html('Subscribe');
+                        $('.form-newsletter button').attr('disabled', false);
+                        let errors = xhr.responseJSON.errors;
+                        $.each(errors, function(key, value) {
+                            notyf.error(value[0]);
+                        });
+                    }
+                })
+            })
+        })
+    </script>
+@endpush

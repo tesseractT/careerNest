@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LearnMoreController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PaymentSettingController;
@@ -134,6 +135,11 @@ Route::group([
 
     /** Custom Page Builder Routes */
     Route::resource('page-builder', CustomPageBuilderController::class);
+
+    /** NewsLetter Routes */
+    Route::get('newsletters', [NewsletterController::class, 'index'])->name('newsletters.index');
+    Route::delete('newsletters/{id}', [NewsletterController::class, 'destroy'])->name('newsletters.destroy');
+    Route::post('newsletters/send', [NewsletterController::class, 'send'])->name('newsletters.send');
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);

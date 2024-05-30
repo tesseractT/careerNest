@@ -29,4 +29,10 @@ class Notify
     {
         return notyf()->addError($error, 'Error');
     }
+
+    // Success Notification
+    static function successNotification()
+    {
+        return notyf()->addSuccess('Success');
+    }
 }

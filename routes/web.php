@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\CandidateExperienceController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\CandidateJobBookmarkController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
+use App\Http\Controllers\Frontend\NewsletterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,9 @@ Route::post('contact', [ContactController::class, 'sendMail'])->name('send-mail'
 
 /** Custom Page Route */
 Route::get('page/{slug}', [HomeController::class, 'customPage'])->name('custom-page');
+
+/** NewsLetter Route */
+Route::post('subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe');
 
 
 
