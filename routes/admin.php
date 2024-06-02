@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LearnMoreController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\MenuBuilderController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
@@ -140,6 +141,9 @@ Route::group([
     Route::get('newsletters', [NewsletterController::class, 'index'])->name('newsletters.index');
     Route::delete('newsletters/{id}', [NewsletterController::class, 'destroy'])->name('newsletters.destroy');
     Route::post('newsletters/send', [NewsletterController::class, 'send'])->name('newsletters.send');
+
+    /** Menu Builder Routes */
+    Route::resource('menu-builder', MenuBuilderController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);

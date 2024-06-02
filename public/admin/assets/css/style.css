@@ -3970,3 +3970,8 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .ck-editor__editable_inline {
     min-height: 400px;
 }
+
+.menu-builder-select.regular-text.menu-item-textbox.input-with-default-title {
+    color: black !important;
+    padding: 8px !important;
+}
