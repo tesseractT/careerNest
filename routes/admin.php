@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CustomPageBuilderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\JobCategoryController;
@@ -144,6 +145,9 @@ Route::group([
 
     /** Menu Builder Routes */
     Route::resource('menu-builder', MenuBuilderController::class);
+
+    /** Footer Routes */
+    Route::resource('footer', FooterController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);

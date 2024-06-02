@@ -489,6 +489,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $page_name
+ * @property string $slug
  * @property string $page_content
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -500,6 +501,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder wherePageContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder wherePageName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CustomPageBuilder withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
@@ -546,6 +548,27 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Experience whereUpdatedAt($value)
  */
 	class Experience extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $logo
+ * @property string $details
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereUpdatedAt($value)
+ */
+	class Footer extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -1197,6 +1220,25 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|State whereUpdatedAt($value)
  */
 	class State extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscribers newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscribers newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscribers query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscribers whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscribers whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscribers whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscribers whereUpdatedAt($value)
+ */
+	class Subscribers extends \Eloquent {}
 }
 
 namespace App\Models{
