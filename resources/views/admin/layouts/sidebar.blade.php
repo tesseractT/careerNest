@@ -221,10 +221,11 @@
                         class="fas fa-columns"></i>
                     <span>Footer</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ setSidebarActive(['admin.footer.*']) }}">
+                    <li class="{{ setSidebarActive(['admin.footer.*', 'admin.social-icon.*']) }}">
                         <a class="nav-link" href="{{ route('admin.footer.index') }}"> Footer Details</a>
                     </li>
-
+                    <li class="{{ setSidebarActive(['admin.social-icon.*']) }}">
+                        <a class="nav-link" href="{{ route('admin.social-icon.index') }}"> Social Icon</a>
                 </ul>
             </li>
 

@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\SocialIconController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\WhyChooseUsController;
@@ -148,6 +149,9 @@ Route::group([
 
     /** Footer Routes */
     Route::resource('footer', FooterController::class);
+
+    /** Social Icon  Routes */
+    Route::resource('social-icon', SocialIconController::class);
 
     /** Job Category Routes */
     Route::resource('job-categories', JobCategoryController::class);

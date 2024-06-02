@@ -28,15 +28,18 @@
             <div class="footer-col-1 col-md-3 col-sm-12">
                 @php
                     $footer = \App\Models\Footer::first();
+                    $socialIcons = \App\Models\SocialIcon::all();
                 @endphp
                 <a class="footer_logo" href="{{ url('/') }}">
                     <img alt="joblist" src="{{ asset($footer?->logo) }}">
                 </a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">{!! $footer?->details !!}</div>
                 <div class="footer-social">
-                    <a class="icon-socials icon-facebook" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="icon-socials icon-twitter" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="icon-socials icon-linkedin" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    @foreach ($socialIcons as $icon)
+                        <a class="icon-socials icon-facebook" href="{{ $icon->url }}"><i
+                                class="{{ $icon->icon }}"></i></a>
+                    @endforeach
+
                 </div>
             </div>
             @php
@@ -89,14 +92,7 @@
         <div class="footer-bottom mt-50">
             <div class="row">
                 <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright &copy; {{ date('Y') }}
-                        Career Nest.
-                        All Right Reserved</span></div>
-                <div class="col-md-6 text-md-end text-start">
-                    <div class="footer-social"><a class="font-xs color-text-paragraph" href="#">Privacy
-                            Policy</a><a class="font-xs color-text-paragraph mr-30 ml-30" href="#">Terms
-                            &amp; Conditions</a><a class="font-xs color-text-paragraph" href="#">Security</a>
-                    </div>
-                </div>
+                        {{ $footer->copy_right }}</span></div>
             </div>
         </div>
     </div>

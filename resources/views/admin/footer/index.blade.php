@@ -32,6 +32,14 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="">Copyright</label>
+                                <input type="text" class="form-control {{ hasError($errors, 'copy_right') }}"
+                                    value="{{ $footer?->copy_right }}" name="copy_right">
+                                <x-input-error :messages="$errors->get('copy_right')" class="mt-2" />
+
+                            </div>
+
+                            <div class="form-group">
                                 <label for="">Description</label>
                                 <textarea name="description" class="form-control {{ hasError($errors, 'description') }}" id="" cols="30"
                                     rows="10">{{ $footer?->details }}</textarea>

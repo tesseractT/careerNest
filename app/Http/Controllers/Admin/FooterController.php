@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Footer;
 use App\Services\Notify;
 use App\Traits\FileUploadTrait;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -26,16 +27,19 @@ class FooterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
         $logoPath = $this->uploadFile($request, 'logo');
-
+        $data = [
+            'copy_right' => $request->copy_right,
+            'details' => $request->description,
+        ];
+        if ($logoPath) {
+            $data['logo'] = $logoPath;
+        }
         Footer::updateOrCreate(
             ['id' => 1],
-            [
-                'logo' => $logoPath,
-                'details' => $request->description,
-            ]
+            $data
         );
 
         Notify::updatedNotification();

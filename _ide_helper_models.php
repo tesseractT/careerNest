@@ -556,12 +556,14 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $logo
+ * @property string $copy_right
  * @property string $details
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Footer newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Footer newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Footer query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereCopyRight($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Footer whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Footer whereDetails($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Footer whereId($value)
@@ -1198,6 +1200,27 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Skill withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Skill extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $icon
+ * @property string $url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialIcon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialIcon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialIcon query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialIcon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialIcon whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialIcon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialIcon whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialIcon whereUrl($value)
+ */
+	class SocialIcon extends \Eloquent {}
 }
 
 namespace App\Models{
