@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
+use App\Models\Job;
 use App\Models\JobExperience;
 use App\Services\Notify;
 use App\Traits\Searchable;
@@ -83,6 +85,15 @@ class JobExperienceController extends Controller
      */
     public function destroy(string $id)
     {
+        //check if the job experience is being used in job
+        $experienceExists = Job::where('job_experience_id', $id)->exists();
+        $candidateExists = Candidate::where('experience_id', $id)->exists();
+        if ($experienceExists) {
+            return response(['message' => 'Job experience is being used in job, cannot delete!'], 500);
+        }
+        if ($candidateExists) {
+            return response(['message' => 'Job experience is being used in candidate, cannot delete!'], 500);
+        }
         try {
             JobExperience::findOrFail($id)->delete();
             Notify::deletedNotification();

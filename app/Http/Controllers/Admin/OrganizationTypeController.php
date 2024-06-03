@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\OrganizationType;
 use App\Services\Notify;
 use App\Traits\Searchable;
@@ -36,7 +37,7 @@ class OrganizationTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) : RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255', 'unique:organization_types,name']
@@ -49,7 +50,6 @@ class OrganizationTypeController extends Controller
         Notify::createdNotification();
 
         return redirect()->route('admin.organization-types.index');
-
     }
 
     /**
@@ -92,6 +92,11 @@ class OrganizationTypeController extends Controller
      */
     public function destroy(string $id): Response
     {
+        //check if the organization type is being used
+        $organizationTypeExists = Company::where('organization_type_id', $id)->exists();
+        if ($organizationTypeExists) {
+            return response(['message' => 'This organization type is being used, cannot delete!'], 400);
+        }
         try {
             OrganizationType::findOrFail($id)->delete();
             Notify::deletedNotification();

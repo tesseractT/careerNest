@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
 use App\Models\Profession;
 use App\Services\Notify;
 use App\Traits\Searchable;
@@ -85,6 +86,11 @@ class ProfessionController extends Controller
      */
     public function destroy(string $id): Response
     {
+        //check if the profession is being used
+        $professionExists = Candidate::where('profession_id', $id)->exists();
+        if ($professionExists) {
+            return response(['message' => 'Profession is being used, cannot be deleted!'], 400);
+        }
         try {
             Profession::findOrFail($id)->delete();
             Notify::deletedNotification();

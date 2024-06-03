@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CandidateSkill;
+use App\Models\JobSkill;
 use App\Models\Skill;
 use App\Services\Notify;
 use App\Traits\Searchable;
@@ -83,6 +85,15 @@ class SkillController extends Controller
      */
     public function destroy(string $id)
     {
+        //check if the skill is being used
+        $skillExists = JobSkill::where('skill_id', $id)->exists();
+        $candidateSkillExists = CandidateSkill::where('skill_id', $id)->exists();
+        if ($skillExists) {
+            return response(['message' => 'This skill is being used, you cannot delete it!'], 400);
+        }
+        if ($candidateSkillExists) {
+            return response(['message' => 'This skill is being used, you cannot delete it!'], 400);
+        }
         try {
             Skill::findOrFail($id)->delete();
             Notify::deletedNotification();

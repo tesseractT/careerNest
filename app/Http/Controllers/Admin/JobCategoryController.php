@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use App\Models\JobCategory;
 use App\Services\Notify;
 use App\Traits\Searchable;
@@ -94,6 +95,11 @@ class JobCategoryController extends Controller
      */
     public function destroy(string $id): Response
     {
+        // Check if the category is associated with any job
+        $jobExists = Job::where('job_category_id', $id)->exists();
+        if ($jobExists) {
+            return response(['message' => 'This category is associated with some jobs, please remove them first!'], 400);
+        }
         try {
             JobCategory::findOrFail($id)->delete();
             Notify::deletedNotification();

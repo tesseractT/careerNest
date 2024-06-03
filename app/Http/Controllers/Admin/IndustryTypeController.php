@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\IndustryType;
 use App\Services\Notify;
 use App\Traits\Searchable;
@@ -82,8 +83,13 @@ class IndustryTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id):Response
+    public function destroy(string $id): Response
     {
+        //check if industry type is being used by any company
+        $companyExists = Company::where('industry_type_id', $id)->exists();
+        if ($companyExists) {
+            return response(['message' => 'Industry type is being used by a company, cannot delete!'], 400);
+        }
         try {
             IndustryType::findOrFail($id)->delete();
             Notify::deletedNotification();
