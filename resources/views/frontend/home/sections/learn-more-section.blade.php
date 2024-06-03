@@ -11,8 +11,8 @@
                     <div class="mt-40">
                         <div class="wow animate__animated animate__fadeInUp"><a class="btn btn-default"
                                 href="jobs-grid.html">Search Jobs</a>
-                            @if ($learn->url)
-                                <a class="btn btn-link" href="{{ $learn->url }}">Learn More</a>
+                            @if ($learn?->url)
+                                <a class="btn btn-link" href="{{ $learn?->url }}">Learn More</a>
                             @endif
 
                         </div>
@@ -22,7 +22,7 @@
             <div class="col-lg-5 col-sm-12">
                 <div class="box-image-job">
                     <figure class="wow animate__animated animate__fadeIn">
-                        <img style="height: 540px; width: 540px;" alt="joblist" src="{{ $learn->image }}">
+                        <img style="height: 540px; width: 540px;" alt="joblist" src="{{ $learn?->image }}">
                     </figure>
                 </div>
             </div>

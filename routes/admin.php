@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\ClearDatabaseController;
 use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CustomPageBuilderController;
@@ -182,4 +183,8 @@ Route::group([
     /** Site Settings Route */
     Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
     Route::post('general-settings', [SiteSettingController::class, 'updateGeneralSetting'])->name('general-settings.update');
+
+    /** Clear Database Route */
+    Route::get('clear-database', [ClearDatabaseController::class, 'index'])->name('clear-database.index');
+    Route::post('clear-database', [ClearDatabaseController::class, 'clear'])->name('clear-database.clear');
 });

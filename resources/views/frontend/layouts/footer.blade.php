@@ -92,7 +92,7 @@
         <div class="footer-bottom mt-50">
             <div class="row">
                 <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright &copy; {{ date('Y') }}
-                        {{ $footer->copy_right }}</span></div>
+                        {{ $footer?->copy_right }}</span></div>
             </div>
         </div>
     </div>

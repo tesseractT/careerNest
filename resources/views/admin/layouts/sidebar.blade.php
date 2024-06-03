@@ -216,12 +216,12 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ setSidebarActive(['admin.footer.*']) }}">
+            <li class="dropdown {{ setSidebarActive(['admin.footer.*', 'admin.social-icon.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fas fa-columns"></i>
                     <span>Footer</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ setSidebarActive(['admin.footer.*', 'admin.social-icon.*']) }}">
+                    <li class="{{ setSidebarActive(['admin.footer.*']) }}">
                         <a class="nav-link" href="{{ route('admin.footer.index') }}"> Footer Details</a>
                     </li>
                     <li class="{{ setSidebarActive(['admin.social-icon.*']) }}">
@@ -232,7 +232,7 @@
 
             <li class="{{ setSidebarActive(['admin.blogs.*']) }}"><a class="nav-link"
                     href="{{ route('admin.blogs.index') }}"><i class="far fa-square"></i> <span>Blogs</span></a></li>
-            <li class="{{ setSidebarActive(['admin.plans.index']) }}"><a class="nav-link"
+            <li class="{{ setSidebarActive(['admin.plans.*']) }}"><a class="nav-link"
                     href="{{ route('admin.plans.index') }}"><i class="far fa-square"></i> <span>Plans &
                         Prices</span></a></li>
 
@@ -250,6 +250,11 @@
             <li class="{{ setSidebarActive(['admin.site-settings.index']) }}"><a class="nav-link"
                     href="{{ route('admin.site-settings.index') }}"><i class="far fa-square"></i> <span>Site
                         Settings</span></a></li>
+
+            <li class="{{ setSidebarActive(['admin.clear-database.index']) }}"><a class="nav-link"
+                    href="{{ route('admin.clear-database.index') }}"><i class="far fa-square"></i> <span>Clear
+                        Database</span></a></li>
+
 
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank
                         Page</span></a></li> --}}

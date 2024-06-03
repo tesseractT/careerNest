@@ -43,14 +43,14 @@
                             <div class="form-group">
                                 <label for="">Title</label>
                                 <input type="text" class="form-control {{ hasError($errors, 'title') }}" name="title"
-                                    value="{{ old('title', $hero->title) }}">
+                                    value="{{ old('title', $hero?->title) }}">
                                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
 
                             </div>
                             <div class="form-group">
                                 <label for="">Sub Title</label>
                                 <input type="text" class="form-control {{ hasError($errors, 'subtitle') }}"
-                                    name="subtitle" value="{{ old('subtitle', $hero->subtitle) }}">
+                                    name="subtitle" value="{{ old('subtitle', $hero?->subtitle) }}">
                                 <x-input-error :messages="$errors->get('subtitle')" class="mt-2" />
                             </div>
                             <div class="form-group">
