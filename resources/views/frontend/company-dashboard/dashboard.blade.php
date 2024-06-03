@@ -76,31 +76,31 @@
                                             <tr>
                                                 <th scope="row">1</th>
                                                 <td><b>Current Package</b></td>
-                                                <td><code>{{ $currentPackage->plan->label }} </code> Package</td>
+                                                <td><code>{{ $currentPackage?->plan?->label }} </code> Package</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
                                                 <td><b>Package Price</b></td>
-                                                <td><code>{{ config('settings.site_currency_icon') }}{{ $currentPackage->plan->price }}</code>
+                                                <td><code>{{ config('settings.site_currency_icon') }}{{ $currentPackage?->plan?->price }}</code>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">3</th>
                                                 <td><b>Job Post Limit Available</b></td>
-                                                <td> <code>{{ $currentPackage->plan->job_limit }}</code> Job Postings Left
+                                                <td> <code>{{ $currentPackage?->job_limit }}</code> Job Postings Left
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">4</th>
                                                 <td><b>Featured Post Available</b></td>
-                                                <td><code>{{ $currentPackage->plan->featured_job_limit }}</code> Featured
+                                                <td><code>{{ $currentPackage?->featured_job_limit }}</code> Featured
                                                     Postings Left
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">5</th>
                                                 <td><b>Highlight Post Available</b></td>
-                                                <td><code>{{ $currentPackage->plan->highlight_job_limit }}</code>
+                                                <td><code>{{ $currentPackage?->highlight_job_limit }}</code>
                                                     Highlighted Postings
                                                     Left</td>
                                             </tr>
