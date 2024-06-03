@@ -17,6 +17,11 @@ use Illuminate\View\View;
 class ReviewController extends Controller
 {
     use FileUploadTrait, Searchable;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:sections']);
+    }
     /**
      * Display a listing of the resource.
      */

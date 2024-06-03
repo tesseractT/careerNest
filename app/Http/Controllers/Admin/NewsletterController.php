@@ -14,6 +14,11 @@ use Mail;
 class NewsletterController extends Controller
 {
     use Searchable;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:newsletter']);
+    }
     function index(): View
     {
         $query = Subscribers::query();

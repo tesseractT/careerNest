@@ -15,6 +15,11 @@ use Illuminate\View\View;
 class ProfessionController extends Controller
 {
     use Searchable;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:job attributes']);
+    }
     /**
      * Display a listing of the resource.
      */

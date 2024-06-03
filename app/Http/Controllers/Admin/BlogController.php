@@ -17,6 +17,11 @@ use Illuminate\View\View;
 class BlogController extends Controller
 {
     use FileUploadTrait, Searchable;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:blogs']);
+    }
     /**
      * Display a listing of the resource.
      */

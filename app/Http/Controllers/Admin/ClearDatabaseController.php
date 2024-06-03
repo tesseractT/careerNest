@@ -11,6 +11,10 @@ use Illuminate\View\View;
 
 class ClearDatabaseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:database clear']);
+    }
     function index(): View
     {
         return view('admin.clear-db.index');
@@ -23,6 +27,7 @@ class ClearDatabaseController extends Controller
             Artisan::call('migrate:fresh');
 
             //Seed the database with records
+            Artisan::call('db:seed', ['--class' => 'RolePermissionSeeder']);
             Artisan::call('db:seed', ['--class' => 'AdminSeeder']);
             Artisan::call('db:seed', ['--class' => 'SiteSettingSeeder']);
             Artisan::call('db:seed', ['--class' => 'MenuSeeder']);

@@ -14,6 +14,11 @@ use Illuminate\View\View;
 class CustomPageBuilderController extends Controller
 {
     use Searchable;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:site pages']);
+    }
     /**
      * Display a listing of the resource.
      */

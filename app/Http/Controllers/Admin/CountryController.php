@@ -13,6 +13,11 @@ use Illuminate\Http\RedirectResponse;
 class CountryController extends Controller
 {
     use Searchable;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:job locations']);
+    }
     /**
      * Display a listing of the resource.
      */

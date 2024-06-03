@@ -163,3 +163,20 @@ if (!function_exists('calculateEarnings')) {
         return $total;
     }
 }
+
+/** Check Permission */
+
+if (!function_exists('canAccess')) {
+
+    function canAccess(array $permissions): bool
+    {
+        $permission = auth()->guard('admin')->user()->hasAnyPermission($permissions);
+        $superAdmin = auth()->guard('admin')->user()->hasRole('Super Admin');
+
+        if ($superAdmin || $permission) {
+            return true;
+        }
+
+        return false;
+    }
+}

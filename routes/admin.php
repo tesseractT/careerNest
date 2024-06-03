@@ -36,6 +36,8 @@ use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\RolePermissionController;
+use App\Http\Controllers\Admin\RoleUserController;
 use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SkillController;
@@ -183,6 +185,12 @@ Route::group([
     /** Site Settings Route */
     Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
     Route::post('general-settings', [SiteSettingController::class, 'updateGeneralSetting'])->name('general-settings.update');
+
+    /** Role Permission Route */
+    Route::resource('roles', RolePermissionController::class);
+
+    /** Role USer Route */
+    Route::resource('role-user', RoleUserController::class);
 
     /** Clear Database Route */
     Route::get('clear-database', [ClearDatabaseController::class, 'index'])->name('clear-database.index');

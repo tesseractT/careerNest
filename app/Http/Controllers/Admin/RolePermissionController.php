@@ -3,31 +3,27 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\SocialIcon;
 use App\Services\Notify;
-use App\Traits\Searchable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
-class SocialIconController extends Controller
+class RolePermissionController extends Controller
 {
-    use Searchable;
-
     public function __construct()
     {
-        $this->middleware(['permission:site footer']);
+        $this->middleware(['permission:access management']);
     }
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $query = SocialIcon::query();
-        $this->search($query, ['url']);
-        $icons = $query->orderBy('id', 'desc')->paginate(20);
-        return view('admin.social-icon.index', compact('icons'));
+        $roles = Role::all();
+        return view('admin.access-management.role.index', compact('roles'));
     }
 
     /**
@@ -35,7 +31,8 @@ class SocialIconController extends Controller
      */
     public function create(): View
     {
-        return view('admin.social-icon.create');
+        $permissions = Permission::all()->groupBy('group');
+        return view('admin.access-management.role.create', compact('permissions'));
     }
 
     /**
@@ -44,29 +41,29 @@ class SocialIconController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'url' => ['required'],
-            'icon' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:50', 'unique:roles,name'],
         ]);
 
-        $social = new SocialIcon();
-        $social->url = $request->url;
-        $social->icon = $request->icon;
-        $social->save();
+        // Create a new role
+        $role = Role::create(['guard_name' => 'admin', 'name' => $request->name]);
+
+        // Assign permissions to the role
+        $role->syncPermissions($request->permissions);
 
         Notify::createdNotification();
 
-        return redirect()->route('admin.social-icon.index');
+        return redirect()->route('admin.roles.index');
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id): View
     {
-        $icon = SocialIcon::findOrFail($id);
-        return view('admin.social-icon.edit', compact('icon'));
+        $role = Role::findOrFail($id);
+        $permissions = Permission::all()->groupBy('group');
+        $rolePermissions = $role->permissions->pluck('name')->toArray();
+        return view('admin.access-management.role.edit', compact('role', 'permissions', 'rolePermissions'));
     }
 
     /**
@@ -74,20 +71,21 @@ class SocialIconController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
+        $role = Role::findOrFail($id);
+
         $request->validate([
-            'url' => ['required'],
+            'name' => ['required', 'string', 'max:50', 'unique:roles,name,' . $role->id],
         ]);
 
-        $social = SocialIcon::findOrFail($id);
-        $social->url = $request->url;
-        if ($request->filled('icon')) {
-            $social->icon = $request->icon;
-        }
-        $social->save();
+        // Update the role
+        $role->update(['name' => $request->name]);
+
+        // Assign permissions to the role
+        $role->syncPermissions($request->permissions);
 
         Notify::updatedNotification();
 
-        return redirect()->route('admin.social-icon.index');
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -96,7 +94,7 @@ class SocialIconController extends Controller
     public function destroy(string $id): Response
     {
         try {
-            SocialIcon::findOrFail($id)->delete();
+            Role::findOrFail($id)->delete();
             Notify::deletedNotification();
             return response(['message' => 'success'], 200);
         } catch (\Exception $e) {

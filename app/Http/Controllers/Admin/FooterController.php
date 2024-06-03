@@ -13,6 +13,11 @@ use Illuminate\View\View;
 class FooterController extends Controller
 {
     use FileUploadTrait;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:site footer']);
+    }
     /**
      * Display a listing of the resource.
      */

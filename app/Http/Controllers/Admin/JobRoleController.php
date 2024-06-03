@@ -14,6 +14,12 @@ use Illuminate\View\View;
 class JobRoleController extends Controller
 {
     use Searchable;
+
+
+    public function __construct()
+    {
+        $this->middleware(['permission:job role']);
+    }
     /**
      * Display a listing of the resource.
      */

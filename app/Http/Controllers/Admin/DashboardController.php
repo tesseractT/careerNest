@@ -15,6 +15,11 @@ use Illuminate\View\View;
 class DashboardController extends Controller
 {
     use Searchable;
+
+    function __construct()
+    {
+        // $this->middleware(['permission']);
+    }
     function index(): View
     {
         $amounts = Order::pluck('default_amount')->toArray();
