@@ -29,20 +29,23 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-info-subtle">
-                                        <h2>12 <span>job applied</span></h2>
-                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                        <h2>{{ $pendingJobPosts }} <span>Pending Jobs</span></h2>
+                                        <span style="align-content: center" class="icon"><i
+                                                class="fas fa-briefcase"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-danger-subtle">
-                                        <h2>12 <span>job applied</span></h2>
-                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                        <h2>{{ $jobPosts }} <span>Total Jobs</span></h2>
+                                        <span style="align-content: center" class="icon"><i
+                                                class="fas fa-briefcase"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-warning-subtle">
-                                        <h2>12 <span>job applied</span></h2>
-                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                        <h2>{{ $orders }} <span>Orders</span></h2>
+                                        <span style="align-content: center" class="icon"><i
+                                                class="fas fa-cart-plus"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -64,6 +67,47 @@
                                     </div>
                                 </div>
                             @endif
+                            <br>
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-bordered">
+
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td><b>Current Package</b></td>
+                                                <td><code>{{ $currentPackage->plan->label }} </code> Package</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td><b>Package Price</b></td>
+                                                <td><code>{{ config('settings.site_currency_icon') }}{{ $currentPackage->plan->price }}</code>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td><b>Job Post Limit Available</b></td>
+                                                <td> <code>{{ $currentPackage->plan->job_limit }}</code> Job Postings Left
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td><b>Featured Post Available</b></td>
+                                                <td><code>{{ $currentPackage->plan->featured_job_limit }}</code> Featured
+                                                    Postings Left
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">5</th>
+                                                <td><b>Highlight Post Available</b></td>
+                                                <td><code>{{ $currentPackage->plan->highlight_job_limit }}</code>
+                                                    Highlighted Postings
+                                                    Left</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
