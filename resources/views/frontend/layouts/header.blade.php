@@ -3,7 +3,7 @@
         <div class="main-header">
             <div class="header-left">
                 <div class="header-logo"><a class="d-flex" href="index.html"><img alt="joblist"
-                            src="{{ asset('frontend/assets/imgs/template/logo.png') }}"></a></div>
+                            src="{{ asset(config('settings.site_logo')) }}"></a></div>
             </div>
             <div class="header-nav">
                 <nav class="nav-main-menu">
