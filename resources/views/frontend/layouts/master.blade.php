@@ -12,7 +12,7 @@
     <meta name="description" content="Index page">
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ config('settings.site_favicon') }}">
 
 
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 
-    <title>CareerNest - Job Portal </title>
+    <title>{{ config('settings.site_name') }} - Job Portal </title>
 </head>
 
 <body>
@@ -37,14 +37,14 @@
         </div>
     </div>
 
-    {{-- <div id="preloader-active">
+    <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="text-center"><img src="{{ asset('frontend/assets/imgs/template/loading.gif') }}"
                         alt="joblist"></div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     @include('frontend.layouts.header')
 
@@ -55,7 +55,7 @@
 
     </main>
 
-   
+
 
     @include('frontend.layouts.footer')
 

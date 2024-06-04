@@ -55,11 +55,11 @@
 
                         </div>
                         <div class="paginations">
-                            <nav class="d-inline-block">
+                            <ul class="pager">
                                 @if ($blogs->hasPages())
-                                    {{ $blogs->withQueryString()->links() }}
-                                @endif
-                            </nav>
+                                {{ $blogs->withQueryString()->links() }}
+                            @endif
+                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12 col-12 pl-40 pl-lg-15 mt-lg-30">

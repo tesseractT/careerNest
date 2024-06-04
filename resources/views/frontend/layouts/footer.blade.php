@@ -1,4 +1,4 @@
-<section class="section-box subscription_box">
+<section class="section-box subscription_box mt-165">
     <div class="container">
         <div class="box-newsletter">
             <div class="newsletter_textarea">

@@ -67,7 +67,7 @@ class FrontendJobPageController extends Controller
             $query->where('job_type_id', $jobTypeId);
         }
 
-        $jobs = $query->paginate(20);
+        $jobs = $query->paginate(10);
         return view('frontend.pages.jobs-index', compact('jobs', 'countries', 'jobCategories', 'jobTypes', 'selectedStates', 'selectedCities'));
     }
 

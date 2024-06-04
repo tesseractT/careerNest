@@ -14,6 +14,9 @@ class PricingPageController extends Controller
      */
     public function __invoke(Request $request): View
     {
+        if (auth()->user()?->role == 'candidate') {
+            abort(403);
+        }
         $plans = Plan::where(['frontend_show' => 1])->get();
         return view('frontend.pages.pricing-index', compact('plans'));
     }

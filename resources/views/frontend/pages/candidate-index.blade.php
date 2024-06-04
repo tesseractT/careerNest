@@ -7,7 +7,7 @@
                     <div class="col-lg-12">
                         <h2 class="mb-20">Candidates</h2>
                         <ul class="breadcrumbs">
-                            <li><a class="home-icon" href="index.html">Home</a></li>
+                            <li><a class="home-icon" href="{{ url('/') }}">Home</a></li>
                             <li>Candidates</li>
                         </ul>
                     </div>
@@ -145,17 +145,21 @@
                                     </div>
                                 </div>
                             @empty
+                                <div class="col-12">
+                                    <div class="alert alert-warning">No candidate found</div>
+                                </div>
                             @endforelse
 
                             <div class="col-12">
-                                <div class="paginations mt-35">
-                                    <nav class="d-inline-block">
+                                <div class="paginations">
+                                    <ul class="pager">
                                         @if ($candidates->hasPages())
                                             {{ $candidates->withQueryString()->links() }}
                                         @endif
-                                    </nav>
+                                    </ul>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

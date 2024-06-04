@@ -37,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody class="experience-tbody">
-                            @foreach ($bookmarks as $bookmark)
+                            @forelse ($bookmarks as $bookmark)
                                 <tr>
 
                                     <td>
@@ -86,16 +86,24 @@
 
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center">No bookmarked job found</td>
+                                </tr>
+                            @endforelse
 
                         </tbody>
                     </table>
                 </div>
-                <nav class="d-inline-block">
-                    @if ($bookmarks->hasPages())
-                        {{ $bookmarks->withQueryString()->links() }}
-                    @endif
-                </nav>
+
+
+                <div class="paginations">
+                    <ul class="pager">
+                        @if ($bookmarks->hasPages())
+                            {{ $bookmarks->withQueryString()->links() }}
+                        @endif
+                    </ul>
+                </div>
             </div>
         </div>
     </section>

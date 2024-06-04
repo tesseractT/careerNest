@@ -29,7 +29,9 @@
 
 
     <!-- Pricing Plan Section -->
-    @include('frontend.home.sections.pricing-plan-section')
+    @if (auth()->user()?->role != 'candidate')
+        @include('frontend.home.sections.pricing-plan-section')
+    @endif
 
     <!-- Jobs by Location Section -->
     {{-- @include('frontend.home.sections.jobs-by-location-section') --}}

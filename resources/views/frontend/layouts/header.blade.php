@@ -2,7 +2,7 @@
     <div class="container">
         <div class="main-header">
             <div class="header-left">
-                <div class="header-logo"><a class="d-flex" href="index.html"><img alt="joblist"
+                <div class="header-logo"><a class="d-flex" href="{{ url('/') }}"><img
                             src="{{ asset(config('settings.site_logo')) }}"></a></div>
             </div>
             <div class="header-nav">
@@ -21,8 +21,10 @@
                                     </ul>
                                 </li>
                             @else
-                                <li class="has-children"><a class=""
-                                        href="{{ $menu['link'] }}">{{ $menu['label'] }}</a></li>
+                                @if ($menu['link'] != '/pricing')
+                                    <li class="has-children"><a class=""
+                                            href="{{ $menu['link'] }}">{{ $menu['label'] }}</a></li>
+                                @endif
                             @endif
                         @endforeach
 
