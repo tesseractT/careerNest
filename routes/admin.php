@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\ProfileUpdateController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\RoleUserController;
@@ -77,6 +78,11 @@ Route::group([
 ], function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+    /** Profile Route */
+    Route::get('profile', [ProfileUpdateController::class, 'index'])->name('profile.index');
+    Route::post('profile', [ProfileUpdateController::class, 'update'])->name('profile.update');
+    Route::post('profile-password', [ProfileUpdateController::class, 'passwordUpdate'])->name('profile-password.update');
 
     /** Dashboard Route */
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
